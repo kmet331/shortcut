@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포토샵 · 일러스트 단축키 사전</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #121316;
+    --bg-soft: #17191d;
+    --card: #1c1f24;
+    --card-border: #2a2e35;
+    --ink: #eceef1;
+    --ink-dim: #9aa0ab;
+    --ink-faint: #5c6270;
+    --key-bg: #24272d;
+    --key-top: #30343c;
+    --key-border: #3a3f48;
+
+    --ps-accent: #31a8ff;
+    --ps-accent-dim: #1c6fa8;
+    --ps-glow: rgba(49,168,255,0.18);
+
+    --ai-accent: #ff9a00;
+    --ai-accent-dim: #b96e00;
+    --ai-glow: rgba(255,154,0,0.18);
+
+    --accent: var(--ps-accent);
+    --accent-dim: var(--ps-accent-dim);
+    --glow: var(--ps-glow);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 600px at 15% -10%, var(--glow), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Noto Sans KR', -apple-system, sans-serif;
+    min-height:100vh;
+    transition: background 0.5s ease;
+  }
+  body[data-app="illustrator"]{
+    --accent: var(--ai-accent);
+    --accent-dim: var(--ai-accent-dim);
+    --glow: var(--ai-glow);
+  }
+
+  .key{
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    max-width:1080px;
+    margin:0 auto;
+    padding:44px 24px 20px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition: color 0.4s ease;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px;height:2px;
+    background:var(--accent);
+    display:inline-block;
+    transition: background 0.4s ease;
+  }
+  h1{
+    font-size:clamp(28px, 5vw, 44px);
+    line-height:1.15;
+    margin:14px 0 8px;
+    font-weight:900;
+    letter-spacing:-0.02em;
+  }
+  h1 .accent-word{ color:var(--accent); transition: color 0.4s ease; }
+  header p.sub{
+    color:var(--ink-dim);
+    font-size:15px;
+    margin:0 0 26px;
+    line-height:1.6;
+  }
+
+  /* ---------- Search ---------- */
+  .search-wrap{
+    position:sticky;
+    top:0;
+    z-index:30;
+    background:linear-gradient(180deg, var(--bg) 60%, transparent);
+    padding:10px 0 18px;
+    margin-top: -6px;
+  }
+  .search-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:14px;
+    padding:14px 18px;
+    max-width:1080px;
+    margin:0 auto;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25);
+  }
+  .search-box:focus-within{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px var(--glow);
+  }
+  .search-box svg{ flex:0 0 auto; color:var(--ink-faint); }
+  .search-box input{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:var(--ink);
+    font-size:16px;
+    font-family:'Noto Sans KR', sans-serif;
+  }
+  .search-box input::placeholder{ color:var(--ink-faint); }
+  .search-clear{
+    display:none;
+    background:var(--key-bg);
+    border:1px solid var(--key-border);
+    color:var(--ink-dim);
+    border-radius:8px;
+    padding:5px 9px;
+    font-size:12px;
+    cursor:pointer;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .search-clear.show{ display:inline-block; }
+
+  /* ---------- Tabs ---------- */
+  .tabs{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px 8px;
+    display:flex;
+    gap:10px;
+  }
+  .tab-btn{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:14px 18px;
+    border-radius:12px;
+    border:1px solid var(--card-border);
+    background:var(--card);
+    color:var(--ink-dim);
+    cursor:pointer;
+    font-size:15px;
+    font-weight:700;
+    font-family:'Noto Sans KR', sans-serif;
+    transition: all 0.25s ease;
+  }
+  .tab-btn .badge{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    font-weight:700;
+    width:26px;height:26px;
+    border-radius:6px;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;
+  }
+  .tab-btn[data-tab="photoshop"] .badge{ background:linear-gradient(135deg,#001e36,#31a8ff); }
+  .tab-btn[data-tab="illustrator"] .badge{ background:linear-gradient(135deg,#330000,#ff9a00); }
+
+  .tab-btn.active{
+    color:var(--ink);
+    border-color:var(--accent);
+    background:linear-gradient(180deg, var(--card), var(--bg-soft));
+    box-shadow:0 0 0 3px var(--glow);
+  }
+
+  /* ---------- Main content ---------- */
+  main{
+    max-width:1080px;
+    margin:0 auto;
+    padding:18px 24px 80px;
+  }
+  .result-meta{
+    color:var(--ink-faint);
+    font-size:13px;
+    font-family:'JetBrains Mono', monospace;
+    margin:6px 4px 22px;
+    min-height:18px;
+  }
+  .result-meta b{ color:var(--accent); }
+
+  .grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  @media (min-width:700px){
+    .grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+  .category{
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:20px 20px 10px;
+  }
+  .category-title{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    margin:0 0 14px;
+    padding-bottom:12px;
+    border-bottom:1px dashed var(--card-border);
+  }
+  .category-title .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--accent);
+    font-weight:700;
+    transition: color 0.4s ease;
+  }
+  .category-title h2{
+    font-size:16px;
+    margin:0;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .category-title .count{
+    margin-left:auto;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--ink-faint);
+  }
+
+  .shortcut-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+  }
+  .shortcut-row:last-child{ border-bottom:none; }
+  .shortcut-row.hidden{ display:none; }
+
+  .keys{
+    flex:0 0 160px;
+    width:160px;
+    display:flex;
+    flex-wrap:wrap;
+    align-content:center;
+    justify-content:flex-start;
+    gap:4px;
+  }
+  .keycap{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    font-weight:700;
+    color:var(--ink);
+    background:linear-gradient(180deg, var(--key-top), var(--key-bg));
+    border:1px solid var(--key-border);
+    border-bottom:2.5px solid var(--key-border);
+    border-radius:6px;
+    padding:4px 7px;
+    white-space:nowrap;
+  }
+  .plus{
+    color:var(--ink-faint);
+    font-size:11px;
+    align-self:center;
+  }
+  .desc{
+    flex:1;
+    font-size:13.5px;
+    line-height:1.55;
+    color:var(--ink-dim);
+  }
+  .desc .tool-name{
+    color:var(--ink);
+    font-weight:700;
+  }
+  .desc mark{
+    background:var(--glow);
+    color:var(--accent);
+    border-radius:3px;
+    padding:0 2px;
+  }
+  .keycap mark{
+    background:transparent;
+    color:inherit;
+    text-decoration:underline;
+    text-decoration-color:var(--accent);
+  }
+
+  .empty-state{
+    text-align:center;
+    padding:70px 20px;
+    color:var(--ink-faint);
+    display:none;
+  }
+  .empty-state.show{ display:block; }
+  .empty-state .big{ font-size:40px; margin-bottom:10px; }
+
+  footer{
+    max-width:1080px;
+    margin:40px auto 0;
+    padding:24px 24px 50px;
+    border-top:1px solid var(--card-border);
+    color:var(--ink-faint);
+    font-size:12px;
+    font-family:'JetBrains Mono', monospace;
+    text-align:center;
+  }
+  footer .footer-note{ margin-bottom:14px; }
+  footer .credit{
+    line-height:1.8;
+    color:var(--ink-faint);
+  }
+  footer .credit strong{ color:var(--ink-dim); }
+  footer .credit a{
+    color:var(--accent);
+    text-decoration:none;
+    transition:color 0.4s ease;
+  }
+  footer .credit a:hover{ text-decoration:underline; }
+
+  @media (max-width:600px){
+    .grid{ grid-template-columns:1fr; }
+    .shortcut-row{ flex-direction:column; gap:6px; }
+    .keys{ min-width:0; }
+  }
+</style>
+</head>
+<body data-app="photoshop">
+
+<header>
+  <div class="eyebrow" id="eyebrow">Photoshop Shortcut Reference</div>
+  <h1>키보드 위에서 완성하는<br><span class="accent-word" id="titleAccent">디자인 워크플로우</span></h1>
+  <p class="sub">포토샵과 일러스트레이터의 단축키를 쓰임새별로 정리했습니다. 한글 또는 영문으로 검색해보세요. (예: "레이어", "Layer", "Ctrl+T")</p>
+</header>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="searchInput" placeholder="단축키 또는 기능 검색... (한글 / English)" autocomplete="off">
+    <button class="search-clear" id="clearBtn">지우기 ✕</button>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="photoshop"><span class="badge">Ps</span> Photoshop</button>
+  <button class="tab-btn" data-tab="illustrator"><span class="badge">Ai</span> Illustrator</button>
+</div>
+
+<main>
+  <div class="result-meta" id="resultMeta">&nbsp;</div>
+  <div class="grid" id="grid"></div>
+  <div class="empty-state" id="emptyState">
+    <div class="big">🔍</div>
+    검색 결과가 없습니다.<br>다른 키워드로 검색해보세요.
+  </div>
+</main>
+
+<footer>
+  <div class="credit">
+    Created by <strong>Myeongeun Kim</strong> (<a href="mailto:kmet331@gmail.com">kmet331@gmail.com</a>)<br>
+    Powered by <strong>Claude Code</strong>
+  </div>
+</footer>
+
+<script>
+const DATA = {
+  photoshop: [
+    { title:"레이어 (Layer)", items:[
+      { keys:["Shift","Ctrl","N"], name:"새 레이어 만들기", desc:"현재 레이어 위에 빈 레이어를 새로 생성합니다." },
+      { keys:["Ctrl","G"], name:"레이어 그룹 만들기", desc:"선택한 레이어들을 하나의 그룹으로 묶습니다." },
+      { keys:["Shift","Ctrl","G"], name:"레이어 그룹 해제", desc:"그룹으로 묶인 레이어를 다시 개별 레이어로 풉니다." },
+      { keys:["Ctrl","E"], name:"레이어 병합", desc:"선택한 레이어 또는 아래 레이어와 병합합니다." },
+      { keys:["Shift","Ctrl","E"], name:"모든 레이어 병합", desc:"화면에 보이는 모든 레이어를 하나로 병합합니다." },
+      { keys:["Ctrl","]"], name:"레이어 한 단계 앞으로", desc:"선택한 레이어의 순서를 한 단계 위로 올립니다." },
+      { keys:["Ctrl","["], name:"레이어 한 단계 뒤로", desc:"선택한 레이어의 순서를 한 단계 아래로 내립니다." },
+      { keys:["Ctrl","Shift","]"], name:"레이어 맨 앞으로", desc:"선택한 레이어를 가장 위로 이동합니다." },
+      { keys:["Ctrl","Shift","["], name:"레이어 맨 뒤로", desc:"선택한 레이어를 가장 아래로 이동합니다." },
+      { keys:["Ctrl","Alt","G"], name:"클리핑 마스크 적용/해제", desc:"아래 레이어를 마스크로 사용해 클리핑합니다. (=Alt+레이어 구분선 클릭)" },
+      { keys:["Ctrl","J"], name:"레이어 복제", desc:"선택영역 없으면 레이어 복제, 있으면 새 레이어로 복제됩니다. Alt+드래그로도 가능합니다." },
+    ]},
+    { title:"보기 (View)", items:[
+      { keys:["Ctrl","+"], name:"화면 확대", desc:"현재 화면의 가운데를 기준으로 확대합니다." },
+      { keys:["Ctrl","-"], name:"화면 축소", desc:"현재 화면의 가운데를 기준으로 축소합니다." },
+      { keys:["Alt","휠"], name:"커서 기준 확대/축소", desc:"마우스 커서의 위치를 기준으로 화면을 확대/축소합니다." },
+      { keys:["Ctrl","0"], name:"창 크기에 맞춰보기", desc:"이미지를 윈도우 크기에 맞춰 표시합니다." },
+      { keys:["Ctrl","1"], name:"실제 크기(100%)", desc:"이미지를 실제 크기(100%)로 표시합니다." },
+      { keys:["Ctrl","R"], name:"눈금자 표시/숨기기", desc:"화면의 눈금자를 꺼내거나 숨깁니다." },
+      { keys:["Ctrl",";"], name:"가이드 표시/숨기기", desc:"가이드 라인을 보이거나 숨깁니다." },
+      { keys:["Ctrl","Alt",";"], name:"가이드 잠그기/풀기", desc:"가이드 라인의 위치를 잠그거나 잠금을 해제합니다." },
+      { keys:["Ctrl","'"], name:"그리드 표시/숨기기", desc:"화면의 격자(그리드)를 보이거나 숨깁니다." },
+      { keys:["Tab"], name:"도구상자 표시/숨기기", desc:"툴 패널과 옵션 바를 화면에서 숨기거나 다시 표시합니다." },
+      { keys:["Shift","Tab"], name:"패널 표시/숨기기", desc:"도구상자를 제외한 모든 패널을 숨기거나 표시합니다." },
+      { keys:["F"], name:"스크린 모드 변경", desc:"표준/전체화면 등 화면 표시 모드를 순환 전환합니다." },
+      { keys:["Ctrl","H"], name:"임시선 표시/숨기기", desc:"가이드, 그리드 등 모든 임시선을 한 번에 보이거나 숨깁니다." },
+    ]},
+    { title:"편집 (Edit)", items:[
+      { keys:["Ctrl","Alt","A"], name:"모든 레이어 선택", desc:"작업 중인 문서의 모든 레이어를 선택합니다." },
+      { keys:["Ctrl","C"], name:"복사", desc:"선택 영역을 클립보드에 복사합니다." },
+      { keys:["Ctrl","X"], name:"잘라내기", desc:"선택 영역을 잘라내어 클립보드로 이동합니다." },
+      { keys:["Ctrl","V"], name:"붙여넣기", desc:"클립보드의 내용을 새 레이어로 붙여넣습니다." },
+      { keys:["Ctrl","Z"], name:"실행 취소", desc:"바로 이전 작업 한 단계를 취소합니다." },
+      { keys:["Alt","Ctrl","Z"], name:"단계별 실행 취소", desc:"작업을 여러 단계 앞으로(과거로) 취소합니다." },
+      { keys:["Alt","Shift","Z"], name:"단계별 다시 실행", desc:"취소했던 작업을 한 단계씩 다시 되돌립니다." },
+      { keys:["Ctrl","F"], name:"마지막 필터 재실행", desc:"가장 최근 적용했던 필터를 동일한 설정으로 다시 적용합니다." },
+      { keys:["Ctrl","T"], name:"자유 변형", desc:"선택 영역이나 레이어를 자유롭게 회전·크기조절 합니다." },
+      { keys:["Shift","Ctrl","T"], name:"Free Transform 재실행", desc:"가장 최근 적용한 자유 변형을 동일하게 다시 적용합니다." },
+    ]},
+    { title:"선택 영역 (Selection)", items:[
+      { keys:["Ctrl","D"], name:"선택영역 해제", desc:"현재 선택된 영역의 선택을 해제합니다. (Deselect)" },
+      { keys:["Shift","Ctrl","I"], name:"선택영역 반전", desc:"선택 영역과 비선택 영역을 서로 반전시킵니다. (Inverse)" },
+      { keys:["Ctrl","A"], name:"전체 선택", desc:"캔버스 전체 영역을 선택합니다. (All)" },
+      { keys:["Shift","드래그"], name:"정사각형/정원 그리기", desc:"선택 도구로 드래그하며 Shift를 누르면 정비율로 그려집니다." },
+      { keys:["Shift","드래그"], name:"선택영역 추가", desc:"이미 선택 영역이 있는 상태에서 Shift+드래그로 영역을 더합니다." },
+      { keys:["Alt","드래그"], name:"선택영역 빼기", desc:"이미 선택 영역이 있는 상태에서 Alt+드래그로 영역을 뺍니다." },
+      { keys:["Ctrl","클릭"], name:"레이어 영역 선택", desc:"레이어 썸네일을 Ctrl+클릭하면 해당 레이어의 이미지 영역이 선택됩니다." },
+    ]},
+    { title:"패스 · 펜 도구", items:[
+      { keys:["Ctrl","Enter"], name:"패스를 선택영역으로", desc:"작업한 패스를 선택 영역으로 변환합니다." },
+      { keys:["Alt"], name:"Convert Point Tool", desc:"펜 도구 사용 중 Alt를 누르면 일시적으로 고정점 변환 도구로 전환됩니다." },
+      { keys:["Alt"], name:"앵커포인트 핸들 제거", desc:"곡선의 방향선(핸들)을 한쪽만 제거해 꺾인 패스를 만듭니다." },
+      { keys:["Shift","클릭"], name:"각도 제한 그리기", desc:"0도, 45도, 90도 단위로 각도를 제한하며 패스를 그립니다." },
+      { keys:["Ctrl"], name:"직접선택 도구 임시 전환", desc:"패스 작업 중 Ctrl을 누르면 일시적으로 직접선택 도구로 전환되어 수정할 수 있습니다." },
+    ]},
+    { title:"자유 이미지 변형", items:[
+      { keys:["Alt","Shift","Ctrl","드래그"], name:"원근감 조절 (Perspective)", desc:"변형 조절점을 이 조합으로 드래그하면 원근 왜곡이 적용됩니다." },
+      { keys:["Shift","Ctrl","드래그"], name:"기울이기 (Skew)", desc:"변형 조절점을 드래그해 이미지를 비스듬히 기울입니다." },
+      { keys:["Ctrl","드래그"], name:"왜곡 (Distort)", desc:"변형 조절점을 자유롭게 드래그해 이미지를 왜곡합니다." },
+      { keys:["Enter"], name:"변형 완료", desc:"Enter 또는 더블클릭으로 자유 변형을 확정합니다." },
+    ]},
+    { title:"브러쉬 · 컬러", items:[
+      { keys:["["], name:"브러쉬 크기 작게", desc:"현재 브러쉬의 크기를 한 단계 줄입니다." },
+      { keys:["]"], name:"브러쉬 크기 크게", desc:"현재 브러쉬의 크기를 한 단계 키웁니다." },
+      { keys:["Alt"], name:"임시 스포이드 도구", desc:"브러쉬 사용 중 Alt를 누르면 일시적으로 스포이드로 전환되어 색을 추출합니다." },
+      { keys:["X"], name:"전경색/배경색 교체", desc:"전경색과 배경색을 서로 맞바꿉니다." },
+      { keys:["D"], name:"색상 기본값 초기화", desc:"전경색은 검정, 배경색은 흰색으로 초기화합니다." },
+      { keys:["Alt","Delete"], name:"전경색 채우기", desc:"선택영역이 없으면 레이어 전체, 있으면 선택영역을 전경색으로 채웁니다." },
+      { keys:["Ctrl","Delete"], name:"배경색 채우기", desc:"선택영역이 없으면 레이어 전체, 있으면 선택영역을 배경색으로 채웁니다." },
+    ]},
+    { title:"파일 · 작업창", items:[
+      { keys:["Ctrl","N"], name:"새 파일 만들기", desc:"새로운 작업 문서를 생성합니다." },
+      { keys:["Ctrl","O"], name:"파일 열기", desc:"기존 이미지 파일을 엽니다. (=회색 바탕화면 더블클릭)" },
+      { keys:["Ctrl","S"], name:"저장하기", desc:"현재 작업 파일을 저장합니다." },
+      { keys:["Shift","Ctrl","S"], name:"다른 이름으로 저장", desc:"현재 파일을 새 이름/형식으로 저장합니다." },
+      { keys:["Alt","Shift","Ctrl","S"], name:"웹용으로 저장", desc:"웹 게시에 최적화된 형식으로 이미지를 저장합니다." },
+      { keys:["Ctrl","W"], name:"작업창 닫기", desc:"현재 열려있는 문서 창을 닫습니다." },
+      { keys:["Alt","Ctrl","W"], name:"모든 작업창 닫기", desc:"열려있는 모든 문서 창을 한 번에 닫습니다." },
+      { keys:["Ctrl","Q"], name:"포토샵 종료", desc:"포토샵 프로그램을 종료합니다." },
+      { keys:["Ctrl","P"], name:"프린트", desc:"현재 문서를 인쇄합니다." },
+      { keys:["Ctrl","K"], name:"환경설정 열기", desc:"Preferences(환경설정) 패널을 엽니다." },
+    ]},
+    { title:"패널 (F키)", items:[
+      { keys:["Alt","F9"], name:"Action 패널", desc:"액션(매크로 자동화) 패널을 표시합니다." },
+      { keys:["F5"], name:"Brush 패널", desc:"브러쉬 설정 패널을 표시합니다." },
+      { keys:["F6"], name:"Color 패널", desc:"색상 선택 패널을 표시합니다." },
+      { keys:["F7"], name:"Layer 패널", desc:"레이어 패널을 표시합니다." },
+      { keys:["F8"], name:"Info 패널", desc:"커서 위치의 색상/좌표 정보 패널을 표시합니다." },
+    ]},
+    { title:"도구상자 (Tools)", items:[
+      { keys:["V"], name:"이동 도구 [Move]", desc:"선택된 이미지를 드래그로 이동할 때 사용합니다." },
+      { keys:["M"], name:"선택 도구 [Marquee]", desc:"사각형·원형·가로줄·세로줄 모양으로 영역을 선택합니다." },
+      { keys:["L"], name:"올가미 도구 [Lasso]", desc:"곡선이나 다각형 모양으로 자유롭게 영역을 선택합니다." },
+      { keys:["W"], name:"마술봉 도구 [Magic Wand]", desc:"비슷한 색상 범위를 한번에 선택합니다." },
+      { keys:["C"], name:"자르기 도구 [Crop]", desc:"이미지의 일부를 잘라낼 때 사용합니다." },
+      { keys:["I"], name:"스포이드 도구 [Eyedropper]", desc:"이미지의 색상을 추출하거나 각도·길이를 잽니다." },
+      { keys:["J"], name:"스팟 힐링 브러시", desc:"이미지의 잡티나 결함을 자연스럽게 보정합니다." },
+      { keys:["B"], name:"브러시 도구 [Brush]", desc:"원하는 색상과 모양으로 붓처럼 그립니다." },
+      { keys:["S"], name:"도장 도구 [Clone Stamp]", desc:"이미지를 복제하여 다른 위치에 복사합니다." },
+      { keys:["Y"], name:"히스토리 브러시", desc:"브러쉬로 드래그한 부분을 이전 상태로 복구합니다." },
+      { keys:["E"], name:"지우개 도구 [Eraser]", desc:"이미지 일부를 지우거나 특정 색상으로 지웁니다." },
+      { keys:["G"], name:"그레이디언트 도구", desc:"두 가지 이상의 색상을 혼합하여 채색합니다." },
+      { keys:["O"], name:"닷지/번/스펀지 도구", desc:"이미지를 밝게·어둡게 하거나 채도를 조절합니다." },
+      { keys:["P"], name:"펜 도구 [Pen]", desc:"패스 선을 그리거나 수정할 때 사용합니다." },
+      { keys:["A"], name:"패스 선택 도구", desc:"이미 만들어진 패스나 셰이프를 선택·이동합니다." },
+      { keys:["T"], name:"문자 도구 [Type]", desc:"이미지에 가로/세로 형태로 문자를 입력합니다." },
+      { keys:["U"], name:"사각형/도형 도구", desc:"사각형·원·다각형 등 다양한 도형을 만듭니다." },
+      { keys:["Z"], name:"돋보기 도구 [Zoom]", desc:"이미지를 확대하거나 축소합니다." },
+      { keys:["H"], name:"손바닥 도구 [Hand]", desc:"확대된 이미지 화면을 이동합니다." },
+      { keys:["D"], name:"전경색/배경색 도구", desc:"색상을 검정/흰색으로 초기화합니다. 전경색은 페인팅 시, 배경색은 지우개 사용 시 채워집니다." },
+      { keys:["Q"], name:"마스크/표준 모드", desc:"클릭할 때마다 마스크 모드와 표준 모드를 전환합니다." },
+    ]},
+  ],
+
+  illustrator: [
+    { title:"파일 (File)", items:[
+      { keys:["Ctrl","N"], name:"새 파일 만들기", desc:"새로운 아트보드 문서를 생성합니다." },
+      { keys:["Ctrl","O"], name:"파일 열기", desc:"기존 작업 파일을 엽니다." },
+      { keys:["Ctrl","S"], name:"파일 저장하기", desc:"현재 작업 파일을 저장합니다." },
+      { keys:["Ctrl","Shift","S"], name:"다른 이름으로 저장", desc:"현재 파일을 새 이름/형식으로 저장합니다." },
+      { keys:["Ctrl","P"], name:"인쇄하기", desc:"현재 문서를 인쇄합니다." },
+      { keys:["Ctrl","W"], name:"파일 닫기", desc:"현재 열려있는 문서를 닫습니다." },
+      { keys:["Ctrl","Q"], name:"일러스트레이터 종료", desc:"프로그램을 종료합니다." },
+    ]},
+    { title:"보기 (View)", items:[
+      { keys:["Ctrl","Y"], name:"아웃라인 보기/숨기기", desc:"패스 윤곽선만 표시하는 아웃라인 모드로 전환합니다." },
+      { keys:["Ctrl","+"], name:"화면 확대", desc:"현재 화면의 가운데를 기준으로 확대합니다." },
+      { keys:["Ctrl","-"], name:"화면 축소", desc:"현재 화면의 가운데를 기준으로 축소합니다." },
+      { keys:["Alt","휠"], name:"커서 기준 확대/축소", desc:"마우스 커서의 위치를 기준으로 화면을 확대/축소합니다." },
+      { keys:["Ctrl","0"], name:"창 크기에 맞춰보기", desc:"아트보드를 윈도우 크기에 맞춰 표시합니다." },
+      { keys:["Ctrl","1"], name:"실제 크기(100%)", desc:"이미지를 실제 크기(100%)로 표시합니다." },
+      { keys:["Ctrl","R"], name:"눈금자 표시/숨기기", desc:"화면의 눈금자를 꺼내거나 숨깁니다." },
+      { keys:["Ctrl",";"], name:"가이드 표시/숨기기", desc:"가이드 라인을 보이거나 숨깁니다." },
+      { keys:["Ctrl","Alt",";"], name:"가이드 잠그기/풀기", desc:"가이드 라인의 위치를 잠그거나 잠금을 해제합니다." },
+    ]},
+    { title:"개체 (Object)", items:[
+      { keys:["Ctrl","D"], name:"이전 변형 반복", desc:"직전에 실행한 변형(이동·복제 등)을 동일하게 반복합니다." },
+      { keys:["Ctrl","]"], name:"한 단계 앞으로", desc:"오브젝트를 한 단계 앞으로 가져옵니다." },
+      { keys:["Ctrl","["], name:"한 단계 뒤로", desc:"오브젝트를 한 단계 뒤로 보냅니다." },
+      { keys:["Ctrl","Shift","]"], name:"맨 앞으로 가져오기", desc:"오브젝트를 가장 앞으로 이동합니다." },
+      { keys:["Ctrl","Shift","["], name:"맨 뒤로 보내기", desc:"오브젝트를 가장 뒤로 이동합니다." },
+      { keys:["Ctrl","G"], name:"그룹", desc:"선택한 오브젝트들을 하나의 그룹으로 묶습니다." },
+      { keys:["Ctrl","Shift","G"], name:"그룹 해제", desc:"그룹으로 묶인 오브젝트를 개별로 풉니다." },
+      { keys:["Ctrl","2"], name:"오브젝트 잠금", desc:"선택한 오브젝트를 잠가 수정할 수 없게 합니다." },
+      { keys:["Ctrl","Alt","2"], name:"오브젝트 잠금 해제", desc:"잠긴 모든 오브젝트의 잠금을 해제합니다." },
+      { keys:["Ctrl","Shift","O"], name:"윤곽선 만들기", desc:"문자를 그림(패스) 오브젝트로 변환합니다." },
+      { keys:["Ctrl","A"], name:"모든 오브젝트 선택", desc:"문서 내 모든 오브젝트를 선택합니다." },
+    ]},
+    { title:"편집 (Edit)", items:[
+      { keys:["Ctrl","Z"], name:"실행 취소", desc:"바로 이전 작업을 취소합니다." },
+      { keys:["Ctrl","Shift","Z"], name:"다시 실행", desc:"취소했던 작업을 다시 되돌립니다." },
+      { keys:["Ctrl","C"], name:"복사", desc:"선택한 오브젝트를 클립보드에 복사합니다." },
+      { keys:["Ctrl","X"], name:"잘라내기", desc:"선택한 오브젝트를 잘라내어 클립보드로 이동합니다." },
+      { keys:["Ctrl","V"], name:"붙여넣기", desc:"클립보드의 오브젝트를 붙여넣습니다." },
+      { keys:["Ctrl","F"], name:"앞에 붙여넣기", desc:"선택한 오브젝트의 바로 앞에 붙여넣습니다." },
+      { keys:["Ctrl","B"], name:"뒤에 붙여넣기", desc:"선택한 오브젝트의 바로 뒤에 붙여넣습니다." },
+      { keys:["Ctrl","Shift","V"], name:"제자리에 붙여넣기", desc:"복사한 위치 그대로 붙여넣습니다." },
+      { keys:["Shift","드래그"], name:"45도 각도 이동 제한", desc:"오브젝트를 선택한 뒤 이동하면서 Shift를 누르면 45도 단위로 이동합니다." },
+      { keys:["Shift","드래그"], name:"정도형 그리기", desc:"도형을 그리면서 Shift를 누르면 정비율(정원·정사각형 등)로 그려집니다." },
+      { keys:["Alt","드래그"], name:"개체 복제", desc:"오브젝트를 선택한 뒤 Alt를 누르며 드래그하면 복제됩니다." },
+      { keys:["Alt","드래그"], name:"중심부터 도형 그리기", desc:"도형을 그리면서 Alt를 누르면 중심점 기준으로 그려집니다." },
+    ]},
+    { title:"패널 (Panel)", items:[
+      { keys:["F5"], name:"Brushes 패널", desc:"브러시 패널을 표시하거나 숨깁니다." },
+      { keys:["F6"], name:"Color 패널", desc:"색상 패널을 표시하거나 숨깁니다." },
+      { keys:["F7"], name:"Layers 패널", desc:"레이어 패널을 표시하거나 숨깁니다." },
+      { keys:["Ctrl","F10"], name:"Stroke 패널", desc:"선(획) 속성 패널을 표시하거나 숨깁니다." },
+      { keys:["Ctrl","T"], name:"Character 패널", desc:"문자 속성 패널을 표시하거나 숨깁니다." },
+      { keys:["Alt","Ctrl","T"], name:"Paragraph 패널", desc:"문단 속성 패널을 표시하거나 숨깁니다." },
+      { keys:["Ctrl","Shift","F9"], name:"Pathfinder 패널", desc:"패스파인더(도형 합성) 패널을 표시하거나 숨깁니다." },
+    ]},
+    { title:"도구상자 (Tools)", items:[
+      { keys:["V"], name:"선택 도구 [Selection]", desc:"오브젝트를 개별적으로 선택하거나 이동할 때 사용합니다." },
+      { keys:["A"], name:"직접선택 도구", desc:"오브젝트의 고정점이나 선분(세그먼트)만 선택·수정할 때 사용합니다." },
+      { keys:["Q"], name:"올가미 도구 [Lasso]", desc:"자유형으로 드래그하여 선택 영역을 지정합니다." },
+      { keys:["Y"], name:"마술봉 도구 [Magic Wand]", desc:"비슷한 색상·속성의 오브젝트를 한번에 선택합니다." },
+      { keys:["P"], name:"펜 도구 [Pen]", desc:"패스나 도형을 그릴 때 사용합니다." },
+      { keys:["+"], name:"고정점 추가 도구", desc:"패스 위에 고정점(앵커포인트)을 추가합니다." },
+      { keys:["-"], name:"고정점 삭제 도구", desc:"패스 위의 고정점을 삭제합니다." },
+      { keys:["Shift","C"], name:"고정점 변환 도구", desc:"고정점을 직선/곡선 속성으로 서로 변환합니다." },
+      { keys:["T"], name:"문자 도구 [Type]", desc:"가로 또는 세로 형태로 문자를 입력합니다." },
+      { keys:["N"], name:"연필 도구 [Pencil]", desc:"자유로운 곡선을 직접 그릴 때 사용합니다." },
+      { keys:["B"], name:"페인트브러시 도구", desc:"브러시 스타일로 자유롭게 선을 그립니다." },
+      { keys:["R"], name:"회전 도구 [Rotate]", desc:"오브젝트를 회전시킬 때 사용합니다." },
+      { keys:["O"], name:"반사 도구 [Reflect]", desc:"오브젝트를 대칭(반사)시킬 때 사용합니다." },
+      { keys:["S"], name:"크기 조절 도구 [Scale]", desc:"오브젝트의 크기를 확대·축소합니다." },
+      { keys:["M"], name:"사각형 도구 [Rectangle]", desc:"사각형·원형·다각형·별 등 다양한 도형을 그립니다." },
+      { keys:["W"], name:"블렌드 도구 [Blend]", desc:"두 오브젝트 사이의 형태·색상을 단계적으로 혼합합니다." },
+      { keys:["E"], name:"자유 변형 도구", desc:"오브젝트의 형태를 자유롭게 변형합니다." },
+      { keys:["G"], name:"그레이디언트 도구", desc:"오브젝트에 그러데이션(그레이디언트)을 적용합니다." },
+      { keys:["I"], name:"스포이드 도구 [Eyedropper]", desc:"오브젝트의 색상·속성을 추출합니다." },
+      { keys:["C"], name:"가위 도구 [Scissors]", desc:"패스나 선을 원하는 지점에서 자릅니다." },
+      { keys:["Z"], name:"돋보기 도구 [Zoom]", desc:"화면을 확대하거나 축소합니다." },
+      { keys:["H"], name:"손바닥 도구 [Hand]", desc:"화면을 손바닥으로 잡아 이동합니다." },
+    ]},
+  ]
+};
+
+const grid = document.getElementById('grid');
+const searchInput = document.getElementById('searchInput');
+const clearBtn = document.getElementById('clearBtn');
+const emptyState = document.getElementById('emptyState');
+const resultMeta = document.getElementById('resultMeta');
+const eyebrow = document.getElementById('eyebrow');
+const titleAccent = document.getElementById('titleAccent');
+
+let currentApp = 'photoshop';
+
+const APP_META = {
+  photoshop: { eyebrow: 'Photoshop Shortcut Reference', title: '디자인 워크플로우', label:'포토샵' },
+  illustrator: { eyebrow: 'Illustrator Shortcut Reference', title: '벡터 드로잉 워크플로우', label:'일러스트레이터' }
+};
+
+function escapeHtml(str){
+  return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function highlight(text, query){
+  const safe = escapeHtml(text);
+  if(!query) return safe;
+  const idx = safe.toLowerCase().indexOf(query.toLowerCase());
+  if(idx === -1) return safe;
+  return safe.slice(0,idx) + '<mark>' + safe.slice(idx, idx+query.length) + '</mark>' + safe.slice(idx+query.length);
+}
+
+function render(){
+  const categories = DATA[currentApp];
+  const query = searchInput.value.trim().toLowerCase();
+  grid.innerHTML = '';
+  let totalShown = 0;
+  let totalAll = 0;
+
+  categories.forEach((cat, ci) => {
+    totalAll += cat.items.length;
+    const matches = cat.items.filter(it => {
+      if(!query) return true;
+      const haystack = (it.name + ' ' + it.desc + ' ' + it.keys.join(' ')).toLowerCase();
+      return haystack.includes(query);
+    });
+    if(matches.length === 0) return;
+    totalShown += matches.length;
+
+    const card = document.createElement('div');
+    card.className = 'category';
+
+    const titleEl = document.createElement('div');
+    titleEl.className = 'category-title';
+    titleEl.innerHTML = `<span class="num">${String(ci+1).padStart(2,'0')}</span><h2>${escapeHtml(cat.title)}</h2><span class="count">${matches.length}개</span>`;
+    card.appendChild(titleEl);
+
+    matches.forEach(it => {
+      const row = document.createElement('div');
+      row.className = 'shortcut-row';
+      const keysHtml = it.keys.map(k => `<span class="keycap">${highlight(k, query)}</span>`).join('<span class="plus">+</span>');
+      row.innerHTML = `
+        <div class="keys">${keysHtml}</div>
+        <div class="desc"><span class="tool-name">${highlight(it.name, query)}</span> — ${highlight(it.desc, query)}</div>
+      `;
+      card.appendChild(row);
+    });
+
+    grid.appendChild(card);
+  });
+
+  emptyState.classList.toggle('show', totalShown === 0);
+  grid.style.display = totalShown === 0 ? 'none' : 'grid';
+
+  if(query){
+    resultMeta.innerHTML = `<b>${totalShown}</b>개 결과 (전체 ${totalAll}개 중) · "${escapeHtml(searchInput.value.trim())}" 검색`;
+  } else {
+    resultMeta.innerHTML = `총 <b>${totalAll}</b>개의 ${APP_META[currentApp].label} 단축키`;
+  }
+
+  clearBtn.classList.toggle('show', !!searchInput.value);
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentApp = btn.dataset.tab;
+    document.body.dataset.app = currentApp;
+    eyebrow.textContent = APP_META[currentApp].eyebrow;
+    titleAccent.textContent = APP_META[currentApp].title;
+    render();
+  });
+});
+
+searchInput.addEventListener('input', render);
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  render();
+  searchInput.focus();
+});
+
+render();
+</script>
+</body>
+</html>
