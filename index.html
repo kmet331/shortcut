@@ -66,7 +66,7 @@
 
   /* ---------- Header ---------- */
   header{
-    max-width:1080px;
+    max-width:1280px;
     margin:0 auto;
     padding:44px 24px 20px;
   }
@@ -110,7 +110,7 @@
     top:0;
     z-index:30;
     background:linear-gradient(180deg, var(--bg) 60%, transparent);
-    padding:10px 0 18px;
+    padding:10px 24px 18px;
     margin-top: -6px;
   }
   .search-box{
@@ -121,7 +121,7 @@
     border:1px solid var(--card-border);
     border-radius:14px;
     padding:14px 18px;
-    max-width:1080px;
+    max-width:1232px;
     margin:0 auto;
     box-shadow:0 8px 24px rgba(0,0,0,0.25);
   }
@@ -155,7 +155,7 @@
 
   /* ---------- Tabs ---------- */
   .tabs{
-    max-width:1080px;
+    max-width:1280px;
     margin:0 auto;
     padding:0 24px 8px;
     display:flex;
@@ -200,7 +200,7 @@
 
   /* ---------- Main content ---------- */
   main{
-    max-width:1080px;
+    max-width:1280px;
     margin:0 auto;
     padding:18px 24px 80px;
   }
@@ -324,7 +324,7 @@
   .empty-state .big{ font-size:40px; margin-bottom:10px; }
 
   footer{
-    max-width:1080px;
+    max-width:1280px;
     margin:40px auto 0;
     padding:24px 24px 50px;
     border-top:1px solid var(--card-border);
@@ -370,9 +370,9 @@
 </div>
 
 <div class="tabs">
-  <button class="tab-btn active" data-tab="photoshop"><span class="badge">Ps</span> Photoshop</button>
-  <button class="tab-btn" data-tab="illustrator"><span class="badge">Ai</span> Illustrator</button>
-  <button class="tab-btn" data-tab="premiere"><span class="badge">Pr</span> Premiere</button>
+  <button class="tab-btn active" id="photoshop" data-tab="photoshop"><span class="badge">Ps</span> Photoshop</button>
+  <button class="tab-btn" id="illustrator" data-tab="illustrator"><span class="badge">Ai</span> Illustrator</button>
+  <button class="tab-btn" id="premiere" data-tab="premiere"><span class="badge">Pr</span> Premiere</button>
 </div>
 
 <main>
@@ -787,16 +787,35 @@ function render(){
   clearBtn.classList.toggle('show', !!searchInput.value);
 }
 
+const TAB_ALIASES = { ps:'photoshop', photoshop:'photoshop', ai:'illustrator', illustrator:'illustrator', pr:'premiere', premiere:'premiere' };
+
+function setApp(app, updateUrl){
+  if(!APP_META[app]) return;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === app));
+  currentApp = app;
+  document.body.dataset.app = app;
+  eyebrow.textContent = APP_META[app].eyebrow;
+  titleAccent.textContent = APP_META[app].title;
+  if(updateUrl){
+    try { history.replaceState(null, '', '#' + app); } catch(e) {}
+  }
+  render();
+}
+
+// 주소의 #아이디 (예: #premiere) 또는 ?tab=premiere 로 처음 보여줄 탭을 지정
+function appFromUrl(){
+  const hash = decodeURIComponent(location.hash.replace('#','')).toLowerCase();
+  const q = (new URLSearchParams(location.search).get('tab') || '').toLowerCase();
+  return TAB_ALIASES[hash] || TAB_ALIASES[q] || null;
+}
+
 document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentApp = btn.dataset.tab;
-    document.body.dataset.app = currentApp;
-    eyebrow.textContent = APP_META[currentApp].eyebrow;
-    titleAccent.textContent = APP_META[currentApp].title;
-    render();
-  });
+  btn.addEventListener('click', () => setApp(btn.dataset.tab, true));
+});
+
+window.addEventListener('hashchange', () => {
+  const a = appFromUrl();
+  if(a && a !== currentApp) setApp(a, false);
 });
 
 searchInput.addEventListener('input', render);
@@ -806,7 +825,7 @@ clearBtn.addEventListener('click', () => {
   searchInput.focus();
 });
 
-render();
+setApp(appFromUrl() || 'photoshop', false);
 </script>
 </body>
 </html>
