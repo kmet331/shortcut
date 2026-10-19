@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>포토샵 · 일러스트 단축키 사전</title>
+<title>포토샵 · 일러스트 · 프리미어 단축키 사전</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzFhOGZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOWEwMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxNTE3MWIiLz4KICA8cmVjdCB4PSI1IiB5PSI1IiB3aWR0aD0iNTQiIGhlaWdodD0iNTQiIHJ4PSIxMSIgZmlsbD0iIzFjMWYyNCIgc3Ryb2tlPSIjMzMzNzNmIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8cmVjdCB4PSIxNCIgeT0iMTQiIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiIgcng9IjciIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnKSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHBhdGggZD0iTTI0IDMyIEwzMCAzOCBMNDIgMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnKSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==">
 <style>
   :root{
@@ -25,6 +25,10 @@
     --ai-accent: #ff9a00;
     --ai-accent-dim: #b96e00;
     --ai-glow: rgba(255,154,0,0.18);
+
+    --pr-accent: #9999ff;
+    --pr-accent-dim: #5c5cc2;
+    --pr-glow: rgba(153,153,255,0.2);
 
     --accent: var(--ps-accent);
     --accent-dim: var(--ps-accent-dim);
@@ -49,6 +53,11 @@
     --accent: var(--ai-accent);
     --accent-dim: var(--ai-accent-dim);
     --glow: var(--ai-glow);
+  }
+  body[data-app="premiere"]{
+    --accent: var(--pr-accent);
+    --accent-dim: var(--pr-accent-dim);
+    --glow: var(--pr-glow);
   }
 
   .key{
@@ -180,6 +189,7 @@
   }
   .tab-btn[data-tab="photoshop"] .badge{ background:linear-gradient(135deg,#001e36,#31a8ff); }
   .tab-btn[data-tab="illustrator"] .badge{ background:linear-gradient(135deg,#330000,#ff9a00); }
+  .tab-btn[data-tab="premiere"] .badge{ background:linear-gradient(135deg,#00005b,#9999ff); }
 
   .tab-btn.active{
     color:var(--ink);
@@ -348,7 +358,7 @@
 <header>
   <div class="eyebrow" id="eyebrow">Photoshop Shortcut Reference</div>
   <h1>키보드 위에서 완성하는<br><span class="accent-word" id="titleAccent">디자인 워크플로우</span></h1>
-  <p class="sub">포토샵과 일러스트레이터의 단축키를 쓰임새별로 정리했습니다. 한글 또는 영문으로 검색해보세요. (예: "레이어", "Layer", "Ctrl+T")</p>
+  <p class="sub">포토샵, 일러스트레이터, 프리미어의 단축키를 쓰임새별로 정리했습니다. 한글 또는 영문으로 검색해보세요. (예: "레이어", "Layer", "Ctrl+T")</p>
 </header>
 
 <div class="search-wrap">
@@ -362,6 +372,7 @@
 <div class="tabs">
   <button class="tab-btn active" data-tab="photoshop"><span class="badge">Ps</span> Photoshop</button>
   <button class="tab-btn" data-tab="illustrator"><span class="badge">Ai</span> Illustrator</button>
+  <button class="tab-btn" data-tab="premiere"><span class="badge">Pr</span> Premiere</button>
 </div>
 
 <main>
@@ -383,201 +394,309 @@
 <script>
 const DATA = {
   photoshop: [
-    { title:"레이어 (Layer)", items:[
-      { keys:["Shift","Ctrl","N"], name:"새 레이어 만들기", desc:"현재 레이어 위에 빈 레이어를 새로 생성합니다." },
-      { keys:["Ctrl","G"], name:"레이어 그룹 만들기", desc:"선택한 레이어들을 하나의 그룹으로 묶습니다." },
-      { keys:["Shift","Ctrl","G"], name:"레이어 그룹 해제", desc:"그룹으로 묶인 레이어를 다시 개별 레이어로 풉니다." },
-      { keys:["Ctrl","E"], name:"레이어 병합", desc:"선택한 레이어 또는 아래 레이어와 병합합니다." },
-      { keys:["Shift","Ctrl","E"], name:"모든 레이어 병합", desc:"화면에 보이는 모든 레이어를 하나로 병합합니다." },
-      { keys:["Ctrl","]"], name:"레이어 한 단계 앞으로", desc:"선택한 레이어의 순서를 한 단계 위로 올립니다." },
-      { keys:["Ctrl","["], name:"레이어 한 단계 뒤로", desc:"선택한 레이어의 순서를 한 단계 아래로 내립니다." },
-      { keys:["Ctrl","Shift","]"], name:"레이어 맨 앞으로", desc:"선택한 레이어를 가장 위로 이동합니다." },
-      { keys:["Ctrl","Shift","["], name:"레이어 맨 뒤로", desc:"선택한 레이어를 가장 아래로 이동합니다." },
-      { keys:["Ctrl","Alt","G"], name:"클리핑 마스크 적용/해제", desc:"아래 레이어를 마스크로 사용해 클리핑합니다. (=Alt+레이어 구분선 클릭)" },
-      { keys:["Ctrl","J"], name:"레이어 복제", desc:"선택영역 없으면 레이어 복제, 있으면 새 레이어로 복제됩니다. Alt+드래그로도 가능합니다." },
+    { title:"레이어(Layer)", items:[
+      { keys:["Shift","Ctrl","N"], name:"새 레이어 만들기(New Layer)", desc:"현재 레이어 위에 빈 레이어를 새로 생성합니다." },
+      { keys:["Ctrl","G"], name:"레이어 그룹 만들기(Group Layers)", desc:"선택한 레이어들을 하나의 그룹으로 묶습니다." },
+      { keys:["Shift","Ctrl","G"], name:"레이어 그룹 해제(Ungroup Layers)", desc:"그룹으로 묶인 레이어를 다시 개별 레이어로 풉니다." },
+      { keys:["Ctrl","E"], name:"레이어 병합(Merge Layers)", desc:"선택한 레이어 또는 아래 레이어와 병합합니다." },
+      { keys:["Shift","Ctrl","E"], name:"모든 레이어 병합(Merge Visible)", desc:"화면에 보이는 모든 레이어를 하나로 병합합니다." },
+      { keys:["Ctrl","]"], name:"레이어 한 단계 앞으로(Bring Forward)", desc:"선택한 레이어의 순서를 한 단계 위로 올립니다." },
+      { keys:["Ctrl","["], name:"레이어 한 단계 뒤로(Send Backward)", desc:"선택한 레이어의 순서를 한 단계 아래로 내립니다." },
+      { keys:["Ctrl","Shift","]"], name:"레이어 맨 앞으로(Bring to Front)", desc:"선택한 레이어를 가장 위로 이동합니다." },
+      { keys:["Ctrl","Shift","["], name:"레이어 맨 뒤로(Send to Back)", desc:"선택한 레이어를 가장 아래로 이동합니다." },
+      { keys:["Ctrl","Alt","G"], name:"클리핑 마스크 적용/해제(Clipping Mask)", desc:"아래 레이어를 마스크로 사용해 클리핑합니다. (=Alt+레이어 구분선 클릭)" },
+      { keys:["Ctrl","J"], name:"레이어 복제(Layer via Copy)", desc:"선택영역 없으면 레이어 복제, 있으면 새 레이어로 복제됩니다. Alt+드래그로도 가능합니다." },
     ]},
-    { title:"보기 (View)", items:[
-      { keys:["Ctrl","+"], name:"화면 확대", desc:"현재 화면의 가운데를 기준으로 확대합니다." },
-      { keys:["Ctrl","-"], name:"화면 축소", desc:"현재 화면의 가운데를 기준으로 축소합니다." },
-      { keys:["Alt","휠"], name:"커서 기준 확대/축소", desc:"마우스 커서의 위치를 기준으로 화면을 확대/축소합니다." },
-      { keys:["Ctrl","0"], name:"창 크기에 맞춰보기", desc:"이미지를 윈도우 크기에 맞춰 표시합니다." },
-      { keys:["Ctrl","1"], name:"실제 크기(100%)", desc:"이미지를 실제 크기(100%)로 표시합니다." },
-      { keys:["Ctrl","R"], name:"눈금자 표시/숨기기", desc:"화면의 눈금자를 꺼내거나 숨깁니다." },
-      { keys:["Ctrl",";"], name:"가이드 표시/숨기기", desc:"가이드 라인을 보이거나 숨깁니다." },
-      { keys:["Ctrl","Alt",";"], name:"가이드 잠그기/풀기", desc:"가이드 라인의 위치를 잠그거나 잠금을 해제합니다." },
-      { keys:["Ctrl","'"], name:"그리드 표시/숨기기", desc:"화면의 격자(그리드)를 보이거나 숨깁니다." },
-      { keys:["Tab"], name:"도구상자 표시/숨기기", desc:"툴 패널과 옵션 바를 화면에서 숨기거나 다시 표시합니다." },
-      { keys:["Shift","Tab"], name:"패널 표시/숨기기", desc:"도구상자를 제외한 모든 패널을 숨기거나 표시합니다." },
-      { keys:["F"], name:"스크린 모드 변경", desc:"표준/전체화면 등 화면 표시 모드를 순환 전환합니다." },
-      { keys:["Ctrl","H"], name:"임시선 표시/숨기기", desc:"가이드, 그리드 등 모든 임시선을 한 번에 보이거나 숨깁니다." },
+    { title:"보기(View)", items:[
+      { keys:["Ctrl","+"], name:"화면 확대(Zoom In)", desc:"현재 화면의 가운데를 기준으로 확대합니다." },
+      { keys:["Ctrl","-"], name:"화면 축소(Zoom Out)", desc:"현재 화면의 가운데를 기준으로 축소합니다." },
+      { keys:["Alt","휠"], name:"커서 기준 확대/축소(Zoom at Cursor)", desc:"마우스 커서의 위치를 기준으로 화면을 확대/축소합니다." },
+      { keys:["Ctrl","0"], name:"창 크기에 맞춰보기(Fit on Screen)", desc:"이미지를 윈도우 크기에 맞춰 표시합니다." },
+      { keys:["Ctrl","1"], name:"실제 크기 100%(Actual Pixels)", desc:"이미지를 실제 크기(100%)로 표시합니다." },
+      { keys:["Ctrl","R"], name:"눈금자 표시/숨기기(Rulers)", desc:"화면의 눈금자를 꺼내거나 숨깁니다." },
+      { keys:["Ctrl",";"], name:"가이드 표시/숨기기(Show/Hide Guides)", desc:"가이드 라인을 보이거나 숨깁니다." },
+      { keys:["Ctrl","Alt",";"], name:"가이드 잠그기/풀기(Lock Guides)", desc:"가이드 라인의 위치를 잠그거나 잠금을 해제합니다." },
+      { keys:["Ctrl","'"], name:"그리드 표시/숨기기(Show/Hide Grid)", desc:"화면의 격자(그리드)를 보이거나 숨깁니다." },
+      { keys:["Tab"], name:"도구상자 표시/숨기기(Show/Hide Toolbox)", desc:"툴 패널과 옵션 바를 화면에서 숨기거나 다시 표시합니다." },
+      { keys:["Shift","Tab"], name:"패널 표시/숨기기(Show/Hide Panels)", desc:"도구상자를 제외한 모든 패널을 숨기거나 표시합니다." },
+      { keys:["F"], name:"스크린 모드 변경(Screen Mode)", desc:"표준/전체화면 등 화면 표시 모드를 순환 전환합니다." },
+      { keys:["Ctrl","H"], name:"임시선 표시/숨기기(Show/Hide Extras)", desc:"가이드, 그리드 등 모든 임시선을 한 번에 보이거나 숨깁니다." },
     ]},
-    { title:"편집 (Edit)", items:[
-      { keys:["Ctrl","Alt","A"], name:"모든 레이어 선택", desc:"작업 중인 문서의 모든 레이어를 선택합니다." },
-      { keys:["Ctrl","C"], name:"복사", desc:"선택 영역을 클립보드에 복사합니다." },
-      { keys:["Ctrl","X"], name:"잘라내기", desc:"선택 영역을 잘라내어 클립보드로 이동합니다." },
-      { keys:["Ctrl","V"], name:"붙여넣기", desc:"클립보드의 내용을 새 레이어로 붙여넣습니다." },
-      { keys:["Ctrl","Z"], name:"실행 취소", desc:"바로 이전 작업 한 단계를 취소합니다." },
-      { keys:["Alt","Ctrl","Z"], name:"단계별 실행 취소", desc:"작업을 여러 단계 앞으로(과거로) 취소합니다." },
-      { keys:["Alt","Shift","Z"], name:"단계별 다시 실행", desc:"취소했던 작업을 한 단계씩 다시 되돌립니다." },
-      { keys:["Ctrl","F"], name:"마지막 필터 재실행", desc:"가장 최근 적용했던 필터를 동일한 설정으로 다시 적용합니다." },
-      { keys:["Ctrl","T"], name:"자유 변형", desc:"선택 영역이나 레이어를 자유롭게 회전·크기조절 합니다." },
-      { keys:["Shift","Ctrl","T"], name:"Free Transform 재실행", desc:"가장 최근 적용한 자유 변형을 동일하게 다시 적용합니다." },
+    { title:"편집(Edit)", items:[
+      { keys:["Ctrl","Alt","A"], name:"모든 레이어 선택(Select All Layers)", desc:"작업 중인 문서의 모든 레이어를 선택합니다." },
+      { keys:["Ctrl","C"], name:"복사(Copy)", desc:"선택 영역을 클립보드에 복사합니다." },
+      { keys:["Ctrl","X"], name:"잘라내기(Cut)", desc:"선택 영역을 잘라내어 클립보드로 이동합니다." },
+      { keys:["Ctrl","V"], name:"붙여넣기(Paste)", desc:"클립보드의 내용을 새 레이어로 붙여넣습니다." },
+      { keys:["Ctrl","Z"], name:"실행 취소(Undo)", desc:"바로 이전 작업 한 단계를 취소합니다." },
+      { keys:["Alt","Ctrl","Z"], name:"단계별 실행 취소(Step Backward)", desc:"작업을 여러 단계 앞으로(과거로) 취소합니다." },
+      { keys:["Alt","Shift","Z"], name:"단계별 다시 실행(Step Forward)", desc:"취소했던 작업을 한 단계씩 다시 되돌립니다." },
+      { keys:["Ctrl","F"], name:"마지막 필터 재실행(Last Filter)", desc:"가장 최근 적용했던 필터를 동일한 설정으로 다시 적용합니다." },
+      { keys:["Ctrl","T"], name:"자유 변형(Free Transform)", desc:"선택 영역이나 레이어를 자유롭게 회전·크기조절 합니다." },
+      { keys:["Shift","Ctrl","T"], name:"자유 변형 재실행(Transform Again)", desc:"가장 최근 적용한 자유 변형을 동일하게 다시 적용합니다." },
     ]},
-    { title:"선택 영역 (Selection)", items:[
-      { keys:["Ctrl","D"], name:"선택영역 해제", desc:"현재 선택된 영역의 선택을 해제합니다. (Deselect)" },
-      { keys:["Shift","Ctrl","I"], name:"선택영역 반전", desc:"선택 영역과 비선택 영역을 서로 반전시킵니다. (Inverse)" },
-      { keys:["Ctrl","A"], name:"전체 선택", desc:"캔버스 전체 영역을 선택합니다. (All)" },
-      { keys:["Shift","드래그"], name:"정사각형/정원 그리기", desc:"선택 도구로 드래그하며 Shift를 누르면 정비율로 그려집니다." },
-      { keys:["Shift","드래그"], name:"선택영역 추가", desc:"이미 선택 영역이 있는 상태에서 Shift+드래그로 영역을 더합니다." },
-      { keys:["Alt","드래그"], name:"선택영역 빼기", desc:"이미 선택 영역이 있는 상태에서 Alt+드래그로 영역을 뺍니다." },
-      { keys:["Ctrl","클릭"], name:"레이어 영역 선택", desc:"레이어 썸네일을 Ctrl+클릭하면 해당 레이어의 이미지 영역이 선택됩니다." },
+    { title:"선택 영역(Selection)", items:[
+      { keys:["Ctrl","D"], name:"선택영역 해제(Deselect)", desc:"현재 선택된 영역의 선택을 해제합니다. (Deselect)" },
+      { keys:["Shift","Ctrl","I"], name:"선택영역 반전(Inverse)", desc:"선택 영역과 비선택 영역을 서로 반전시킵니다. (Inverse)" },
+      { keys:["Ctrl","A"], name:"전체 선택(Select All)", desc:"캔버스 전체 영역을 선택합니다. (All)" },
+      { keys:["Shift","드래그"], name:"정사각형/정원 그리기(Constrain Proportions)", desc:"선택 도구로 드래그하며 Shift를 누르면 정비율로 그려집니다." },
+      { keys:["Shift","드래그"], name:"선택영역 추가(Add to Selection)", desc:"이미 선택 영역이 있는 상태에서 Shift+드래그로 영역을 더합니다." },
+      { keys:["Alt","드래그"], name:"선택영역 빼기(Subtract from Selection)", desc:"이미 선택 영역이 있는 상태에서 Alt+드래그로 영역을 뺍니다." },
+      { keys:["Ctrl","클릭"], name:"레이어 영역 선택(Load Layer Selection)", desc:"레이어 썸네일을 Ctrl+클릭하면 해당 레이어의 이미지 영역이 선택됩니다." },
     ]},
-    { title:"패스 · 펜 도구", items:[
-      { keys:["Ctrl","Enter"], name:"패스를 선택영역으로", desc:"작업한 패스를 선택 영역으로 변환합니다." },
-      { keys:["Alt"], name:"Convert Point Tool", desc:"펜 도구 사용 중 Alt를 누르면 일시적으로 고정점 변환 도구로 전환됩니다." },
-      { keys:["Alt"], name:"앵커포인트 핸들 제거", desc:"곡선의 방향선(핸들)을 한쪽만 제거해 꺾인 패스를 만듭니다." },
-      { keys:["Shift","클릭"], name:"각도 제한 그리기", desc:"0도, 45도, 90도 단위로 각도를 제한하며 패스를 그립니다." },
-      { keys:["Ctrl"], name:"직접선택 도구 임시 전환", desc:"패스 작업 중 Ctrl을 누르면 일시적으로 직접선택 도구로 전환되어 수정할 수 있습니다." },
+    { title:"패스 · 펜 도구(Path · Pen Tool)", items:[
+      { keys:["Ctrl","Enter"], name:"패스를 선택영역으로(Make Selection from Path)", desc:"작업한 패스를 선택 영역으로 변환합니다." },
+      { keys:["Alt"], name:"고정점 변환 도구(Convert Point Tool)", desc:"펜 도구 사용 중 Alt를 누르면 일시적으로 고정점 변환 도구로 전환됩니다." },
+      { keys:["Alt"], name:"앵커포인트 핸들 제거(Remove Handle)", desc:"곡선의 방향선(핸들)을 한쪽만 제거해 꺾인 패스를 만듭니다." },
+      { keys:["Shift","클릭"], name:"각도 제한 그리기(Constrain Angle)", desc:"0도, 45도, 90도 단위로 각도를 제한하며 패스를 그립니다." },
+      { keys:["Ctrl"], name:"직접선택 도구 임시 전환(Temporary Direct Selection Tool)", desc:"패스 작업 중 Ctrl을 누르면 일시적으로 직접선택 도구로 전환되어 수정할 수 있습니다." },
     ]},
-    { title:"자유 이미지 변형", items:[
-      { keys:["Alt","Shift","Ctrl","드래그"], name:"원근감 조절 (Perspective)", desc:"변형 조절점을 이 조합으로 드래그하면 원근 왜곡이 적용됩니다." },
-      { keys:["Shift","Ctrl","드래그"], name:"기울이기 (Skew)", desc:"변형 조절점을 드래그해 이미지를 비스듬히 기울입니다." },
-      { keys:["Ctrl","드래그"], name:"왜곡 (Distort)", desc:"변형 조절점을 자유롭게 드래그해 이미지를 왜곡합니다." },
-      { keys:["Enter"], name:"변형 완료", desc:"Enter 또는 더블클릭으로 자유 변형을 확정합니다." },
+    { title:"자유 이미지 변형(Free Transform)", items:[
+      { keys:["Alt","Shift","Ctrl","드래그"], name:"원근감 조절(Perspective)", desc:"변형 조절점을 이 조합으로 드래그하면 원근 왜곡이 적용됩니다." },
+      { keys:["Shift","Ctrl","드래그"], name:"기울이기(Skew)", desc:"변형 조절점을 드래그해 이미지를 비스듬히 기울입니다." },
+      { keys:["Ctrl","드래그"], name:"왜곡(Distort)", desc:"변형 조절점을 자유롭게 드래그해 이미지를 왜곡합니다." },
+      { keys:["Enter"], name:"변형 완료(Commit Transform)", desc:"Enter 또는 더블클릭으로 자유 변형을 확정합니다." },
     ]},
-    { title:"브러쉬 · 컬러", items:[
-      { keys:["["], name:"브러쉬 크기 작게", desc:"현재 브러쉬의 크기를 한 단계 줄입니다." },
-      { keys:["]"], name:"브러쉬 크기 크게", desc:"현재 브러쉬의 크기를 한 단계 키웁니다." },
-      { keys:["Alt"], name:"임시 스포이드 도구", desc:"브러쉬 사용 중 Alt를 누르면 일시적으로 스포이드로 전환되어 색을 추출합니다." },
-      { keys:["X"], name:"전경색/배경색 교체", desc:"전경색과 배경색을 서로 맞바꿉니다." },
-      { keys:["D"], name:"색상 기본값 초기화", desc:"전경색은 검정, 배경색은 흰색으로 초기화합니다." },
-      { keys:["Alt","Delete"], name:"전경색 채우기", desc:"선택영역이 없으면 레이어 전체, 있으면 선택영역을 전경색으로 채웁니다." },
-      { keys:["Ctrl","Delete"], name:"배경색 채우기", desc:"선택영역이 없으면 레이어 전체, 있으면 선택영역을 배경색으로 채웁니다." },
+    { title:"브러쉬 · 컬러(Brush · Color)", items:[
+      { keys:["["], name:"브러쉬 크기 작게(Decrease Brush Size)", desc:"현재 브러쉬의 크기를 한 단계 줄입니다." },
+      { keys:["]"], name:"브러쉬 크기 크게(Increase Brush Size)", desc:"현재 브러쉬의 크기를 한 단계 키웁니다." },
+      { keys:["Alt"], name:"임시 스포이드 도구(Temporary Eyedropper)", desc:"브러쉬 사용 중 Alt를 누르면 일시적으로 스포이드로 전환되어 색을 추출합니다." },
+      { keys:["X"], name:"전경색/배경색 교체(Switch Colors)", desc:"전경색과 배경색을 서로 맞바꿉니다." },
+      { keys:["D"], name:"색상 기본값 초기화(Default Colors)", desc:"전경색은 검정, 배경색은 흰색으로 초기화합니다." },
+      { keys:["Alt","Delete"], name:"전경색 채우기(Fill Foreground)", desc:"선택영역이 없으면 레이어 전체, 있으면 선택영역을 전경색으로 채웁니다." },
+      { keys:["Ctrl","Delete"], name:"배경색 채우기(Fill Background)", desc:"선택영역이 없으면 레이어 전체, 있으면 선택영역을 배경색으로 채웁니다." },
     ]},
-    { title:"파일 · 작업창", items:[
-      { keys:["Ctrl","N"], name:"새 파일 만들기", desc:"새로운 작업 문서를 생성합니다." },
-      { keys:["Ctrl","O"], name:"파일 열기", desc:"기존 이미지 파일을 엽니다. (=회색 바탕화면 더블클릭)" },
-      { keys:["Ctrl","S"], name:"저장하기", desc:"현재 작업 파일을 저장합니다." },
-      { keys:["Shift","Ctrl","S"], name:"다른 이름으로 저장", desc:"현재 파일을 새 이름/형식으로 저장합니다." },
-      { keys:["Alt","Shift","Ctrl","S"], name:"웹용으로 저장", desc:"웹 게시에 최적화된 형식으로 이미지를 저장합니다." },
-      { keys:["Ctrl","W"], name:"작업창 닫기", desc:"현재 열려있는 문서 창을 닫습니다." },
-      { keys:["Alt","Ctrl","W"], name:"모든 작업창 닫기", desc:"열려있는 모든 문서 창을 한 번에 닫습니다." },
-      { keys:["Ctrl","Q"], name:"포토샵 종료", desc:"포토샵 프로그램을 종료합니다." },
-      { keys:["Ctrl","P"], name:"프린트", desc:"현재 문서를 인쇄합니다." },
-      { keys:["Ctrl","K"], name:"환경설정 열기", desc:"Preferences(환경설정) 패널을 엽니다." },
+    { title:"파일 · 작업창(File · Window)", items:[
+      { keys:["Ctrl","N"], name:"새 파일 만들기(New)", desc:"새로운 작업 문서를 생성합니다." },
+      { keys:["Ctrl","O"], name:"파일 열기(Open)", desc:"기존 이미지 파일을 엽니다. (=회색 바탕화면 더블클릭)" },
+      { keys:["Ctrl","S"], name:"저장하기(Save)", desc:"현재 작업 파일을 저장합니다." },
+      { keys:["Shift","Ctrl","S"], name:"다른 이름으로 저장(Save As)", desc:"현재 파일을 새 이름/형식으로 저장합니다." },
+      { keys:["Alt","Shift","Ctrl","S"], name:"웹용으로 저장(Save for Web)", desc:"웹 게시에 최적화된 형식으로 이미지를 저장합니다." },
+      { keys:["Ctrl","W"], name:"작업창 닫기(Close)", desc:"현재 열려있는 문서 창을 닫습니다." },
+      { keys:["Alt","Ctrl","W"], name:"모든 작업창 닫기(Close All)", desc:"열려있는 모든 문서 창을 한 번에 닫습니다." },
+      { keys:["Ctrl","Q"], name:"포토샵 종료(Quit Photoshop)", desc:"포토샵 프로그램을 종료합니다." },
+      { keys:["Ctrl","P"], name:"프린트(Print)", desc:"현재 문서를 인쇄합니다." },
+      { keys:["Ctrl","K"], name:"환경설정 열기(Preferences)", desc:"Preferences(환경설정) 패널을 엽니다." },
     ]},
-    { title:"패널 (F키)", items:[
-      { keys:["Alt","F9"], name:"Action 패널", desc:"액션(매크로 자동화) 패널을 표시합니다." },
-      { keys:["F5"], name:"Brush 패널", desc:"브러쉬 설정 패널을 표시합니다." },
-      { keys:["F6"], name:"Color 패널", desc:"색상 선택 패널을 표시합니다." },
-      { keys:["F7"], name:"Layer 패널", desc:"레이어 패널을 표시합니다." },
-      { keys:["F8"], name:"Info 패널", desc:"커서 위치의 색상/좌표 정보 패널을 표시합니다." },
+    { title:"패널(Panels · F Keys)", items:[
+      { keys:["Alt","F9"], name:"액션 패널(Actions Panel)", desc:"액션(매크로 자동화) 패널을 표시합니다." },
+      { keys:["F5"], name:"브러쉬 패널(Brush Panel)", desc:"브러쉬 설정 패널을 표시합니다." },
+      { keys:["F6"], name:"컬러 패널(Color Panel)", desc:"색상 선택 패널을 표시합니다." },
+      { keys:["F7"], name:"레이어 패널(Layers Panel)", desc:"레이어 패널을 표시합니다." },
+      { keys:["F8"], name:"정보 패널(Info Panel)", desc:"커서 위치의 색상/좌표 정보 패널을 표시합니다." },
     ]},
-    { title:"도구상자 (Tools)", items:[
-      { keys:["V"], name:"이동 도구 [Move]", desc:"선택된 이미지를 드래그로 이동할 때 사용합니다." },
-      { keys:["M"], name:"선택 도구 [Marquee]", desc:"사각형·원형·가로줄·세로줄 모양으로 영역을 선택합니다." },
-      { keys:["L"], name:"올가미 도구 [Lasso]", desc:"곡선이나 다각형 모양으로 자유롭게 영역을 선택합니다." },
-      { keys:["W"], name:"마술봉 도구 [Magic Wand]", desc:"비슷한 색상 범위를 한번에 선택합니다." },
-      { keys:["C"], name:"자르기 도구 [Crop]", desc:"이미지의 일부를 잘라낼 때 사용합니다." },
-      { keys:["I"], name:"스포이드 도구 [Eyedropper]", desc:"이미지의 색상을 추출하거나 각도·길이를 잽니다." },
-      { keys:["J"], name:"스팟 힐링 브러시", desc:"이미지의 잡티나 결함을 자연스럽게 보정합니다." },
-      { keys:["B"], name:"브러시 도구 [Brush]", desc:"원하는 색상과 모양으로 붓처럼 그립니다." },
-      { keys:["S"], name:"도장 도구 [Clone Stamp]", desc:"이미지를 복제하여 다른 위치에 복사합니다." },
-      { keys:["Y"], name:"히스토리 브러시", desc:"브러쉬로 드래그한 부분을 이전 상태로 복구합니다." },
-      { keys:["E"], name:"지우개 도구 [Eraser]", desc:"이미지 일부를 지우거나 특정 색상으로 지웁니다." },
-      { keys:["G"], name:"그레이디언트 도구", desc:"두 가지 이상의 색상을 혼합하여 채색합니다." },
-      { keys:["O"], name:"닷지/번/스펀지 도구", desc:"이미지를 밝게·어둡게 하거나 채도를 조절합니다." },
-      { keys:["P"], name:"펜 도구 [Pen]", desc:"패스 선을 그리거나 수정할 때 사용합니다." },
-      { keys:["A"], name:"패스 선택 도구", desc:"이미 만들어진 패스나 셰이프를 선택·이동합니다." },
-      { keys:["T"], name:"문자 도구 [Type]", desc:"이미지에 가로/세로 형태로 문자를 입력합니다." },
-      { keys:["U"], name:"사각형/도형 도구", desc:"사각형·원·다각형 등 다양한 도형을 만듭니다." },
-      { keys:["Z"], name:"돋보기 도구 [Zoom]", desc:"이미지를 확대하거나 축소합니다." },
-      { keys:["H"], name:"손바닥 도구 [Hand]", desc:"확대된 이미지 화면을 이동합니다." },
-      { keys:["D"], name:"전경색/배경색 도구", desc:"색상을 검정/흰색으로 초기화합니다. 전경색은 페인팅 시, 배경색은 지우개 사용 시 채워집니다." },
-      { keys:["Q"], name:"마스크/표준 모드", desc:"클릭할 때마다 마스크 모드와 표준 모드를 전환합니다." },
+    { title:"도구상자(Tools)", items:[
+      { keys:["V"], name:"이동 도구(Move)", desc:"선택된 이미지를 드래그로 이동할 때 사용합니다." },
+      { keys:["M"], name:"선택 도구(Marquee)", desc:"사각형·원형·가로줄·세로줄 모양으로 영역을 선택합니다." },
+      { keys:["L"], name:"올가미 도구(Lasso)", desc:"곡선이나 다각형 모양으로 자유롭게 영역을 선택합니다." },
+      { keys:["W"], name:"마술봉 도구(Magic Wand)", desc:"비슷한 색상 범위를 한번에 선택합니다." },
+      { keys:["C"], name:"자르기 도구(Crop)", desc:"이미지의 일부를 잘라낼 때 사용합니다." },
+      { keys:["I"], name:"스포이드 도구(Eyedropper)", desc:"이미지의 색상을 추출하거나 각도·길이를 잽니다." },
+      { keys:["J"], name:"스팟 힐링 브러시(Spot Healing Brush)", desc:"이미지의 잡티나 결함을 자연스럽게 보정합니다." },
+      { keys:["B"], name:"브러시 도구(Brush)", desc:"원하는 색상과 모양으로 붓처럼 그립니다." },
+      { keys:["S"], name:"도장 도구(Clone Stamp)", desc:"이미지를 복제하여 다른 위치에 복사합니다." },
+      { keys:["Y"], name:"히스토리 브러시(History Brush)", desc:"브러쉬로 드래그한 부분을 이전 상태로 복구합니다." },
+      { keys:["E"], name:"지우개 도구(Eraser)", desc:"이미지 일부를 지우거나 특정 색상으로 지웁니다." },
+      { keys:["G"], name:"그레이디언트 도구(Gradient Tool)", desc:"두 가지 이상의 색상을 혼합하여 채색합니다." },
+      { keys:["O"], name:"닷지/번/스펀지 도구(Dodge/Burn/Sponge Tool)", desc:"이미지를 밝게·어둡게 하거나 채도를 조절합니다." },
+      { keys:["P"], name:"펜 도구(Pen)", desc:"패스 선을 그리거나 수정할 때 사용합니다." },
+      { keys:["A"], name:"패스 선택 도구(Path Selection Tool)", desc:"이미 만들어진 패스나 셰이프를 선택·이동합니다." },
+      { keys:["T"], name:"문자 도구(Type)", desc:"이미지에 가로/세로 형태로 문자를 입력합니다." },
+      { keys:["U"], name:"사각형/도형 도구(Rectangle/Shape Tool)", desc:"사각형·원·다각형 등 다양한 도형을 만듭니다." },
+      { keys:["Z"], name:"돋보기 도구(Zoom)", desc:"이미지를 확대하거나 축소합니다." },
+      { keys:["H"], name:"손바닥 도구(Hand)", desc:"확대된 이미지 화면을 이동합니다." },
+      { keys:["D"], name:"전경색/배경색 도구(Foreground/Background Color)", desc:"색상을 검정/흰색으로 초기화합니다. 전경색은 페인팅 시, 배경색은 지우개 사용 시 채워집니다." },
+      { keys:["Q"], name:"마스크/표준 모드(Quick Mask Mode)", desc:"클릭할 때마다 마스크 모드와 표준 모드를 전환합니다." },
     ]},
   ],
 
   illustrator: [
-    { title:"파일 (File)", items:[
-      { keys:["Ctrl","N"], name:"새 파일 만들기", desc:"새로운 아트보드 문서를 생성합니다." },
-      { keys:["Ctrl","O"], name:"파일 열기", desc:"기존 작업 파일을 엽니다." },
-      { keys:["Ctrl","S"], name:"파일 저장하기", desc:"현재 작업 파일을 저장합니다." },
-      { keys:["Ctrl","Shift","S"], name:"다른 이름으로 저장", desc:"현재 파일을 새 이름/형식으로 저장합니다." },
-      { keys:["Ctrl","P"], name:"인쇄하기", desc:"현재 문서를 인쇄합니다." },
-      { keys:["Ctrl","W"], name:"파일 닫기", desc:"현재 열려있는 문서를 닫습니다." },
-      { keys:["Ctrl","Q"], name:"일러스트레이터 종료", desc:"프로그램을 종료합니다." },
+    { title:"파일(File)", items:[
+      { keys:["Ctrl","N"], name:"새 파일 만들기(New)", desc:"새로운 아트보드 문서를 생성합니다." },
+      { keys:["Ctrl","O"], name:"파일 열기(Open)", desc:"기존 작업 파일을 엽니다." },
+      { keys:["Ctrl","S"], name:"파일 저장하기(Save)", desc:"현재 작업 파일을 저장합니다." },
+      { keys:["Ctrl","Shift","S"], name:"다른 이름으로 저장(Save As)", desc:"현재 파일을 새 이름/형식으로 저장합니다." },
+      { keys:["Ctrl","P"], name:"인쇄하기(Print)", desc:"현재 문서를 인쇄합니다." },
+      { keys:["Ctrl","W"], name:"파일 닫기(Close)", desc:"현재 열려있는 문서를 닫습니다." },
+      { keys:["Ctrl","Q"], name:"일러스트레이터 종료(Quit Illustrator)", desc:"프로그램을 종료합니다." },
     ]},
-    { title:"보기 (View)", items:[
-      { keys:["Ctrl","Y"], name:"아웃라인 보기/숨기기", desc:"패스 윤곽선만 표시하는 아웃라인 모드로 전환합니다." },
-      { keys:["Ctrl","+"], name:"화면 확대", desc:"현재 화면의 가운데를 기준으로 확대합니다." },
-      { keys:["Ctrl","-"], name:"화면 축소", desc:"현재 화면의 가운데를 기준으로 축소합니다." },
-      { keys:["Alt","휠"], name:"커서 기준 확대/축소", desc:"마우스 커서의 위치를 기준으로 화면을 확대/축소합니다." },
-      { keys:["Ctrl","0"], name:"창 크기에 맞춰보기", desc:"아트보드를 윈도우 크기에 맞춰 표시합니다." },
-      { keys:["Ctrl","1"], name:"실제 크기(100%)", desc:"이미지를 실제 크기(100%)로 표시합니다." },
-      { keys:["Ctrl","R"], name:"눈금자 표시/숨기기", desc:"화면의 눈금자를 꺼내거나 숨깁니다." },
-      { keys:["Ctrl",";"], name:"가이드 표시/숨기기", desc:"가이드 라인을 보이거나 숨깁니다." },
-      { keys:["Ctrl","Alt",";"], name:"가이드 잠그기/풀기", desc:"가이드 라인의 위치를 잠그거나 잠금을 해제합니다." },
+    { title:"보기(View)", items:[
+      { keys:["Ctrl","Y"], name:"아웃라인 보기/숨기기(Outline View)", desc:"패스 윤곽선만 표시하는 아웃라인 모드로 전환합니다." },
+      { keys:["Ctrl","+"], name:"화면 확대(Zoom In)", desc:"현재 화면의 가운데를 기준으로 확대합니다." },
+      { keys:["Ctrl","-"], name:"화면 축소(Zoom Out)", desc:"현재 화면의 가운데를 기준으로 축소합니다." },
+      { keys:["Alt","휠"], name:"커서 기준 확대/축소(Zoom at Cursor)", desc:"마우스 커서의 위치를 기준으로 화면을 확대/축소합니다." },
+      { keys:["Ctrl","0"], name:"창 크기에 맞춰보기(Fit on Screen)", desc:"아트보드를 윈도우 크기에 맞춰 표시합니다." },
+      { keys:["Ctrl","1"], name:"실제 크기 100%(Actual Pixels)", desc:"이미지를 실제 크기(100%)로 표시합니다." },
+      { keys:["Ctrl","R"], name:"눈금자 표시/숨기기(Rulers)", desc:"화면의 눈금자를 꺼내거나 숨깁니다." },
+      { keys:["Ctrl",";"], name:"가이드 표시/숨기기(Show/Hide Guides)", desc:"가이드 라인을 보이거나 숨깁니다." },
+      { keys:["Ctrl","Alt",";"], name:"가이드 잠그기/풀기(Lock Guides)", desc:"가이드 라인의 위치를 잠그거나 잠금을 해제합니다." },
     ]},
-    { title:"개체 (Object)", items:[
-      { keys:["Ctrl","D"], name:"이전 변형 반복", desc:"직전에 실행한 변형(이동·복제 등)을 동일하게 반복합니다." },
-      { keys:["Ctrl","]"], name:"한 단계 앞으로", desc:"오브젝트를 한 단계 앞으로 가져옵니다." },
-      { keys:["Ctrl","["], name:"한 단계 뒤로", desc:"오브젝트를 한 단계 뒤로 보냅니다." },
-      { keys:["Ctrl","Shift","]"], name:"맨 앞으로 가져오기", desc:"오브젝트를 가장 앞으로 이동합니다." },
-      { keys:["Ctrl","Shift","["], name:"맨 뒤로 보내기", desc:"오브젝트를 가장 뒤로 이동합니다." },
-      { keys:["Ctrl","G"], name:"그룹", desc:"선택한 오브젝트들을 하나의 그룹으로 묶습니다." },
-      { keys:["Ctrl","Shift","G"], name:"그룹 해제", desc:"그룹으로 묶인 오브젝트를 개별로 풉니다." },
-      { keys:["Ctrl","2"], name:"오브젝트 잠금", desc:"선택한 오브젝트를 잠가 수정할 수 없게 합니다." },
-      { keys:["Ctrl","Alt","2"], name:"오브젝트 잠금 해제", desc:"잠긴 모든 오브젝트의 잠금을 해제합니다." },
-      { keys:["Ctrl","Shift","O"], name:"윤곽선 만들기", desc:"문자를 그림(패스) 오브젝트로 변환합니다." },
-      { keys:["Ctrl","A"], name:"모든 오브젝트 선택", desc:"문서 내 모든 오브젝트를 선택합니다." },
+    { title:"개체(Object)", items:[
+      { keys:["Ctrl","D"], name:"이전 변형 반복(Transform Again)", desc:"직전에 실행한 변형(이동·복제 등)을 동일하게 반복합니다." },
+      { keys:["Ctrl","]"], name:"한 단계 앞으로(Bring Forward)", desc:"오브젝트를 한 단계 앞으로 가져옵니다." },
+      { keys:["Ctrl","["], name:"한 단계 뒤로(Send Backward)", desc:"오브젝트를 한 단계 뒤로 보냅니다." },
+      { keys:["Ctrl","Shift","]"], name:"맨 앞으로 가져오기(Bring to Front)", desc:"오브젝트를 가장 앞으로 이동합니다." },
+      { keys:["Ctrl","Shift","["], name:"맨 뒤로 보내기(Send to Back)", desc:"오브젝트를 가장 뒤로 이동합니다." },
+      { keys:["Ctrl","G"], name:"그룹(Group)", desc:"선택한 오브젝트들을 하나의 그룹으로 묶습니다." },
+      { keys:["Ctrl","Shift","G"], name:"그룹 해제(Ungroup)", desc:"그룹으로 묶인 오브젝트를 개별로 풉니다." },
+      { keys:["Ctrl","2"], name:"오브젝트 잠금(Lock)", desc:"선택한 오브젝트를 잠가 수정할 수 없게 합니다." },
+      { keys:["Ctrl","Alt","2"], name:"오브젝트 잠금 해제(Unlock All)", desc:"잠긴 모든 오브젝트의 잠금을 해제합니다." },
+      { keys:["Ctrl","Shift","O"], name:"윤곽선 만들기(Create Outlines)", desc:"문자를 그림(패스) 오브젝트로 변환합니다." },
+      { keys:["Ctrl","A"], name:"모든 오브젝트 선택(Select All)", desc:"문서 내 모든 오브젝트를 선택합니다." },
     ]},
-    { title:"편집 (Edit)", items:[
-      { keys:["Ctrl","Z"], name:"실행 취소", desc:"바로 이전 작업을 취소합니다." },
-      { keys:["Ctrl","Shift","Z"], name:"다시 실행", desc:"취소했던 작업을 다시 되돌립니다." },
-      { keys:["Ctrl","C"], name:"복사", desc:"선택한 오브젝트를 클립보드에 복사합니다." },
-      { keys:["Ctrl","X"], name:"잘라내기", desc:"선택한 오브젝트를 잘라내어 클립보드로 이동합니다." },
-      { keys:["Ctrl","V"], name:"붙여넣기", desc:"클립보드의 오브젝트를 붙여넣습니다." },
-      { keys:["Ctrl","F"], name:"앞에 붙여넣기", desc:"선택한 오브젝트의 바로 앞에 붙여넣습니다." },
-      { keys:["Ctrl","B"], name:"뒤에 붙여넣기", desc:"선택한 오브젝트의 바로 뒤에 붙여넣습니다." },
-      { keys:["Ctrl","Shift","V"], name:"제자리에 붙여넣기", desc:"복사한 위치 그대로 붙여넣습니다." },
-      { keys:["Shift","드래그"], name:"45도 각도 이동 제한", desc:"오브젝트를 선택한 뒤 이동하면서 Shift를 누르면 45도 단위로 이동합니다." },
-      { keys:["Shift","드래그"], name:"정도형 그리기", desc:"도형을 그리면서 Shift를 누르면 정비율(정원·정사각형 등)로 그려집니다." },
-      { keys:["Alt","드래그"], name:"개체 복제", desc:"오브젝트를 선택한 뒤 Alt를 누르며 드래그하면 복제됩니다." },
-      { keys:["Alt","드래그"], name:"중심부터 도형 그리기", desc:"도형을 그리면서 Alt를 누르면 중심점 기준으로 그려집니다." },
+    { title:"편집(Edit)", items:[
+      { keys:["Ctrl","Z"], name:"실행 취소(Undo)", desc:"바로 이전 작업을 취소합니다." },
+      { keys:["Ctrl","Shift","Z"], name:"다시 실행(Redo)", desc:"취소했던 작업을 다시 되돌립니다." },
+      { keys:["Ctrl","C"], name:"복사(Copy)", desc:"선택한 오브젝트를 클립보드에 복사합니다." },
+      { keys:["Ctrl","X"], name:"잘라내기(Cut)", desc:"선택한 오브젝트를 잘라내어 클립보드로 이동합니다." },
+      { keys:["Ctrl","V"], name:"붙여넣기(Paste)", desc:"클립보드의 오브젝트를 붙여넣습니다." },
+      { keys:["Ctrl","F"], name:"앞에 붙여넣기(Paste in Front)", desc:"선택한 오브젝트의 바로 앞에 붙여넣습니다." },
+      { keys:["Ctrl","B"], name:"뒤에 붙여넣기(Paste in Back)", desc:"선택한 오브젝트의 바로 뒤에 붙여넣습니다." },
+      { keys:["Ctrl","Shift","V"], name:"제자리에 붙여넣기(Paste in Place)", desc:"복사한 위치 그대로 붙여넣습니다." },
+      { keys:["Shift","드래그"], name:"45도 각도 이동 제한(Constrain Angle)", desc:"오브젝트를 선택한 뒤 이동하면서 Shift를 누르면 45도 단위로 이동합니다." },
+      { keys:["Shift","드래그"], name:"정비율 도형 그리기(Constrain Proportions)", desc:"도형을 그리면서 Shift를 누르면 정비율(정원·정사각형 등)로 그려집니다." },
+      { keys:["Alt","드래그"], name:"개체 복제(Duplicate Object)", desc:"오브젝트를 선택한 뒤 Alt를 누르며 드래그하면 복제됩니다." },
+      { keys:["Alt","드래그"], name:"중심부터 도형 그리기(Draw from Center)", desc:"도형을 그리면서 Alt를 누르면 중심점 기준으로 그려집니다." },
     ]},
-    { title:"패널 (Panel)", items:[
-      { keys:["F5"], name:"Brushes 패널", desc:"브러시 패널을 표시하거나 숨깁니다." },
-      { keys:["F6"], name:"Color 패널", desc:"색상 패널을 표시하거나 숨깁니다." },
-      { keys:["F7"], name:"Layers 패널", desc:"레이어 패널을 표시하거나 숨깁니다." },
-      { keys:["Ctrl","F10"], name:"Stroke 패널", desc:"선(획) 속성 패널을 표시하거나 숨깁니다." },
-      { keys:["Ctrl","T"], name:"Character 패널", desc:"문자 속성 패널을 표시하거나 숨깁니다." },
-      { keys:["Alt","Ctrl","T"], name:"Paragraph 패널", desc:"문단 속성 패널을 표시하거나 숨깁니다." },
-      { keys:["Ctrl","Shift","F9"], name:"Pathfinder 패널", desc:"패스파인더(도형 합성) 패널을 표시하거나 숨깁니다." },
+    { title:"패널(Panel)", items:[
+      { keys:["F5"], name:"브러시 패널(Brushes Panel)", desc:"브러시 패널을 표시하거나 숨깁니다." },
+      { keys:["F6"], name:"컬러 패널(Color Panel)", desc:"색상 패널을 표시하거나 숨깁니다." },
+      { keys:["F7"], name:"레이어 패널(Layers Panel)", desc:"레이어 패널을 표시하거나 숨깁니다." },
+      { keys:["Ctrl","F10"], name:"선 패널(Stroke Panel)", desc:"선(획) 속성 패널을 표시하거나 숨깁니다." },
+      { keys:["Ctrl","T"], name:"문자 패널(Character Panel)", desc:"문자 속성 패널을 표시하거나 숨깁니다." },
+      { keys:["Alt","Ctrl","T"], name:"단락 패널(Paragraph Panel)", desc:"문단 속성 패널을 표시하거나 숨깁니다." },
+      { keys:["Ctrl","Shift","F9"], name:"패스파인더 패널(Pathfinder Panel)", desc:"패스파인더(도형 합성) 패널을 표시하거나 숨깁니다." },
     ]},
-    { title:"도구상자 (Tools)", items:[
-      { keys:["V"], name:"선택 도구 [Selection]", desc:"오브젝트를 개별적으로 선택하거나 이동할 때 사용합니다." },
-      { keys:["A"], name:"직접선택 도구", desc:"오브젝트의 고정점이나 선분(세그먼트)만 선택·수정할 때 사용합니다." },
-      { keys:["Q"], name:"올가미 도구 [Lasso]", desc:"자유형으로 드래그하여 선택 영역을 지정합니다." },
-      { keys:["Y"], name:"마술봉 도구 [Magic Wand]", desc:"비슷한 색상·속성의 오브젝트를 한번에 선택합니다." },
-      { keys:["P"], name:"펜 도구 [Pen]", desc:"패스나 도형을 그릴 때 사용합니다." },
-      { keys:["+"], name:"고정점 추가 도구", desc:"패스 위에 고정점(앵커포인트)을 추가합니다." },
-      { keys:["-"], name:"고정점 삭제 도구", desc:"패스 위의 고정점을 삭제합니다." },
-      { keys:["Shift","C"], name:"고정점 변환 도구", desc:"고정점을 직선/곡선 속성으로 서로 변환합니다." },
-      { keys:["T"], name:"문자 도구 [Type]", desc:"가로 또는 세로 형태로 문자를 입력합니다." },
-      { keys:["N"], name:"연필 도구 [Pencil]", desc:"자유로운 곡선을 직접 그릴 때 사용합니다." },
-      { keys:["B"], name:"페인트브러시 도구", desc:"브러시 스타일로 자유롭게 선을 그립니다." },
-      { keys:["R"], name:"회전 도구 [Rotate]", desc:"오브젝트를 회전시킬 때 사용합니다." },
-      { keys:["O"], name:"반사 도구 [Reflect]", desc:"오브젝트를 대칭(반사)시킬 때 사용합니다." },
-      { keys:["S"], name:"크기 조절 도구 [Scale]", desc:"오브젝트의 크기를 확대·축소합니다." },
-      { keys:["M"], name:"사각형 도구 [Rectangle]", desc:"사각형·원형·다각형·별 등 다양한 도형을 그립니다." },
-      { keys:["W"], name:"블렌드 도구 [Blend]", desc:"두 오브젝트 사이의 형태·색상을 단계적으로 혼합합니다." },
-      { keys:["E"], name:"자유 변형 도구", desc:"오브젝트의 형태를 자유롭게 변형합니다." },
-      { keys:["G"], name:"그레이디언트 도구", desc:"오브젝트에 그러데이션(그레이디언트)을 적용합니다." },
-      { keys:["I"], name:"스포이드 도구 [Eyedropper]", desc:"오브젝트의 색상·속성을 추출합니다." },
-      { keys:["C"], name:"가위 도구 [Scissors]", desc:"패스나 선을 원하는 지점에서 자릅니다." },
-      { keys:["Z"], name:"돋보기 도구 [Zoom]", desc:"화면을 확대하거나 축소합니다." },
-      { keys:["H"], name:"손바닥 도구 [Hand]", desc:"화면을 손바닥으로 잡아 이동합니다." },
+    { title:"도구상자(Tools)", items:[
+      { keys:["V"], name:"선택 도구(Selection)", desc:"오브젝트를 개별적으로 선택하거나 이동할 때 사용합니다." },
+      { keys:["A"], name:"직접선택 도구(Direct Selection Tool)", desc:"오브젝트의 고정점이나 선분(세그먼트)만 선택·수정할 때 사용합니다." },
+      { keys:["Q"], name:"올가미 도구(Lasso)", desc:"자유형으로 드래그하여 선택 영역을 지정합니다." },
+      { keys:["Y"], name:"마술봉 도구(Magic Wand)", desc:"비슷한 색상·속성의 오브젝트를 한번에 선택합니다." },
+      { keys:["P"], name:"펜 도구(Pen)", desc:"패스나 도형을 그릴 때 사용합니다." },
+      { keys:["+"], name:"고정점 추가 도구(Add Anchor Point Tool)", desc:"패스 위에 고정점(앵커포인트)을 추가합니다." },
+      { keys:["-"], name:"고정점 삭제 도구(Delete Anchor Point Tool)", desc:"패스 위의 고정점을 삭제합니다." },
+      { keys:["Shift","C"], name:"고정점 변환 도구(Anchor Point Tool)", desc:"고정점을 직선/곡선 속성으로 서로 변환합니다." },
+      { keys:["T"], name:"문자 도구(Type)", desc:"가로 또는 세로 형태로 문자를 입력합니다." },
+      { keys:["N"], name:"연필 도구(Pencil)", desc:"자유로운 곡선을 직접 그릴 때 사용합니다." },
+      { keys:["B"], name:"페인트브러시 도구(Paintbrush Tool)", desc:"브러시 스타일로 자유롭게 선을 그립니다." },
+      { keys:["R"], name:"회전 도구(Rotate)", desc:"오브젝트를 회전시킬 때 사용합니다." },
+      { keys:["O"], name:"반사 도구(Reflect)", desc:"오브젝트를 대칭(반사)시킬 때 사용합니다." },
+      { keys:["S"], name:"크기 조절 도구(Scale)", desc:"오브젝트의 크기를 확대·축소합니다." },
+      { keys:["M"], name:"사각형 도구(Rectangle)", desc:"사각형·원형·다각형·별 등 다양한 도형을 그립니다." },
+      { keys:["W"], name:"블렌드 도구(Blend)", desc:"두 오브젝트 사이의 형태·색상을 단계적으로 혼합합니다." },
+      { keys:["E"], name:"자유 변형 도구(Free Transform Tool)", desc:"오브젝트의 형태를 자유롭게 변형합니다." },
+      { keys:["G"], name:"그레이디언트 도구(Gradient Tool)", desc:"오브젝트에 그러데이션(그레이디언트)을 적용합니다." },
+      { keys:["I"], name:"스포이드 도구(Eyedropper)", desc:"오브젝트의 색상·속성을 추출합니다." },
+      { keys:["C"], name:"가위 도구(Scissors)", desc:"패스나 선을 원하는 지점에서 자릅니다." },
+      { keys:["Z"], name:"돋보기 도구(Zoom)", desc:"화면을 확대하거나 축소합니다." },
+      { keys:["H"], name:"손바닥 도구(Hand)", desc:"화면을 손바닥으로 잡아 이동합니다." },
+    ]},
+  ],
+
+  premiere: [
+    { title:"파일(File)", items:[
+      { keys:["Ctrl","Alt","N"], name:"새 프로젝트(New Project)", desc:"새로운 프리미어 프로젝트를 만듭니다." },
+      { keys:["Ctrl","O"], name:"프로젝트 열기(Open Project)", desc:"기존 프로젝트 파일을 엽니다." },
+      { keys:["Ctrl","W"], name:"닫기(Close)", desc:"현재 창이나 패널을 닫습니다." },
+      { keys:["Ctrl","S"], name:"저장(Save)", desc:"현재 프로젝트를 저장합니다." },
+      { keys:["Ctrl","Shift","S"], name:"다른 이름으로 저장(Save As)", desc:"프로젝트를 새 이름으로 저장합니다." },
+      { keys:["Ctrl","I"], name:"가져오기(Import File)", desc:"영상·오디오·이미지 등 소스 파일을 프로젝트로 가져옵니다." },
+      { keys:["Ctrl","M"], name:"내보내기 > 미디어(Export > Media)", desc:"내보내기 설정 창을 열어 영상을 렌더링합니다." },
+    ]},
+    { title:"편집(Edit)", items:[
+      { keys:["Ctrl","Z"], name:"실행 취소(Undo)", desc:"바로 이전 작업을 취소합니다." },
+      { keys:["Ctrl","Shift","Z"], name:"다시 실행(Redo)", desc:"취소했던 작업을 다시 되돌립니다." },
+      { keys:["Ctrl","X"], name:"잘라내기(Cut)", desc:"선택한 클립을 잘라냅니다." },
+      { keys:["Ctrl","C"], name:"복사(Copy)", desc:"선택한 클립을 복사합니다." },
+      { keys:["Ctrl","V"], name:"붙여넣기(Paste)", desc:"복사한 클립을 재생헤드 위치에 붙여넣습니다." },
+      { keys:["Ctrl","Shift","V"], name:"삽입 붙여넣기(Paste Insert)", desc:"뒤쪽 클립을 밀어내며 붙여넣습니다." },
+      { keys:["Delete"], name:"지우기(Clear)", desc:"선택한 클립을 지웁니다. 타임라인 패널에서는 Back Space로도 가능합니다. (타임라인 패널의 선택 지우기, Clear Selection)" },
+      { keys:["Shift","Delete"], name:"잔물결 삭제(Ripple Delete)", desc:"선택한 클립을 지우고 뒤쪽 클립을 당겨 빈 공간을 메웁니다. 타임라인 패널에서는 Alt+Back Space로도 가능합니다." },
+      { keys:["Ctrl","Shift","/"], name:"복제(Duplicate)", desc:"선택한 항목을 복제합니다." },
+      { keys:["Ctrl","A"], name:"모두 선택(Select All)", desc:"모든 클립을 선택합니다." },
+      { keys:["Ctrl","F"], name:"찾기(Find)", desc:"프로젝트 패널에서 클립을 검색합니다." },
+      { keys:["Ctrl","E"], name:"원본 편집(Edit Original)", desc:"선택한 클립의 원본 파일을 해당 프로그램에서 엽니다." },
+      { keys:["Ctrl","Alt","K"], name:"키보드 단축키(Keyboard Shortcuts)", desc:"[편집] > [키보드 단축키] 메뉴입니다. 이 표에 없는 단축키를 확인하고 직접 설정할 수 있습니다." },
+    ]},
+    { title:"클립(Clip)", items:[
+      { keys:["Ctrl","R"], name:"속도/지속 시간(Speed/Duration)", desc:"선택한 클립의 재생 속도와 길이를 설정합니다." },
+      { keys:["Shift","E"], name:"사용(Enable)", desc:"선택한 클립을 켜거나 끕니다." },
+      { keys:["Ctrl","L"], name:"연결(Link)", desc:"비디오와 오디오 클립을 연결하거나 연결을 해제합니다." },
+      { keys:["Ctrl","G"], name:"그룹화(Group)", desc:"선택한 클립들을 하나로 묶습니다." },
+      { keys:["Ctrl","Shift","G"], name:"그룹 해제(Ungroup)", desc:"묶인 클립을 다시 개별로 풉니다." },
+    ]},
+    { title:"시퀀스(Sequence)", items:[
+      { keys:["Enter"], name:"시작에서 종료까지 효과 렌더링(Render Effects In to Out)", desc:"시작점~종료점 구간의 효과를 미리 렌더링합니다." },
+      { keys:["Ctrl","D"], name:"비디오 전환 적용(Apply Video Transition)", desc:"선택한 편집점에 기본 비디오 전환 효과를 적용합니다." },
+      { keys:["+"], name:"확대(Zoom In)", desc:"타임라인을 확대해 세밀하게 봅니다. 키보드에서는 +와 =가 한 키이며, Shift 없이 눌러도 됩니다." },
+      { keys:["-"], name:"축소(Zoom Out)", desc:"타임라인을 축소해 전체 흐름을 봅니다." },
+      { keys:["S"], name:"타임라인에서 스냅(Snap)", desc:"클립이 편집점·재생헤드에 달라붙는 스냅 기능을 켜고 끕니다." },
+    ]},
+    { title:"타임라인 패널(Timeline Panel)", items:[
+      { keys:["Page Down"], name:"다음 화면 보이기(Show Next Screen)", desc:"타임라인 화면을 다음 구간으로 넘깁니다." },
+      { keys:["Page Up"], name:"이전 화면 보이기(Show Previous Screen)", desc:"타임라인 화면을 이전 구간으로 넘깁니다." },
+    ]},
+    { title:"도구상자(Tools)", items:[
+      { keys:["V"], name:"선택 도구(Selection Tool)", desc:"클립을 선택하고 이동합니다." },
+      { keys:["Shift","A"], name:"뒤로 트랙 선택 도구(Track Select Backward Tool)", desc:"클릭한 클립과 그 왼쪽(영상 앞부분)에 있는 클립을 같은 트랙에서 한 번에 선택합니다." },
+      { keys:["A"], name:"앞으로 트랙 선택 도구(Track Select Forward Tool)", desc:"클릭한 클립과 그 오른쪽(영상 뒷부분)에 있는 클립을 같은 트랙에서 한 번에 선택합니다." },
+      { keys:["B"], name:"잔물결 편집 도구(Ripple Edit Tool)", desc:"클립 길이를 조절하면 뒤쪽 클립이 자동으로 따라옵니다." },
+      { keys:["N"], name:"롤링 편집 도구(Rolling Edit Tool)", desc:"맞닿은 두 클립의 경계를 옮겨 한쪽은 늘리고 다른 쪽은 줄입니다." },
+      { keys:["R"], name:"속도 조정 도구(Rate Stretch Tool)", desc:"클립 길이를 늘이거나 줄여 재생 속도를 조절합니다." },
+      { keys:["C"], name:"자르기 도구(Razor Tool)", desc:"클릭한 지점에서 클립을 자릅니다." },
+      { keys:["Y"], name:"밀어넣기 도구(Slip Tool)", desc:"클립 길이는 그대로 두고 사용하는 구간만 바꿉니다." },
+      { keys:["U"], name:"밀기 도구(Slide Tool)", desc:"클립 위치를 옮기며 앞뒤 클립의 길이를 자동으로 조절합니다." },
+      { keys:["P"], name:"펜 도구(Pen Tool)", desc:"마스크나 키프레임 곡선을 그립니다." },
+      { keys:["H"], name:"손 도구(Hand Tool)", desc:"타임라인 화면을 좌우로 이동합니다." },
+      { keys:["Z"], name:"확대/축소 도구(Zoom Tool)", desc:"타임라인을 확대하거나 축소합니다." },
+    ]},
+    { title:"재생 · 이동(Playback) · 보충", items:[
+      { keys:["Space"], name:"재생/정지(Play/Stop)", desc:"재생헤드 위치에서 재생하거나 멈춥니다." },
+      { keys:["J"], name:"역방향 재생(Play Backward)", desc:"거꾸로 재생합니다. 여러 번 누르면 배속이 빨라집니다." },
+      { keys:["K"], name:"정지(Stop)", desc:"재생을 멈춥니다. J 또는 L과 함께 누르면 천천히 재생됩니다." },
+      { keys:["L"], name:"정방향 재생(Play Forward)", desc:"앞으로 재생합니다. 여러 번 누르면 배속이 빨라집니다." },
+      { keys:["←"], name:"1프레임 뒤로(Step Back 1 Frame)", desc:"재생헤드를 한 프레임 왼쪽으로 옮깁니다." },
+      { keys:["→"], name:"1프레임 앞으로(Step Forward 1 Frame)", desc:"재생헤드를 한 프레임 오른쪽으로 옮깁니다." },
+      { keys:["Shift","←"], name:"5프레임 뒤로(Step Back 5 Frames)", desc:"재생헤드를 여러 프레임(기본 5프레임) 왼쪽으로 옮깁니다." },
+      { keys:["Shift","→"], name:"5프레임 앞으로(Step Forward 5 Frames)", desc:"재생헤드를 여러 프레임(기본 5프레임) 오른쪽으로 옮깁니다." },
+      { keys:["↑"], name:"이전 편집점으로 이동(Go to Previous Edit Point)", desc:"재생헤드를 이전 클립 경계(편집점)로 이동합니다." },
+      { keys:["↓"], name:"다음 편집점으로 이동(Go to Next Edit Point)", desc:"재생헤드를 다음 클립 경계(편집점)로 이동합니다." },
+      { keys:["Home"], name:"시퀀스 시작으로(Go to Start)", desc:"재생헤드를 타임라인의 맨 처음으로 이동합니다." },
+      { keys:["End"], name:"시퀀스 끝으로(Go to End)", desc:"재생헤드를 타임라인의 맨 끝으로 이동합니다." },
+    ]},
+    { title:"마크 · 편집점(Marks · Edit Points) · 보충", items:[
+      { keys:["I"], name:"시작점 표시(Mark In)", desc:"재생헤드 위치를 구간의 시작점으로 지정합니다." },
+      { keys:["O"], name:"종료점 표시(Mark Out)", desc:"재생헤드 위치를 구간의 종료점으로 지정합니다." },
+      { keys:["X"], name:"클립 표시(Mark Clip)", desc:"재생헤드 아래 클립 전체 구간을 시작·종료점으로 지정합니다." },
+      { keys:["Shift","I"], name:"시작점으로 이동(Go to In Point)", desc:"재생헤드를 지정해둔 시작점으로 이동합니다." },
+      { keys:["Shift","O"], name:"종료점으로 이동(Go to Out Point)", desc:"재생헤드를 지정해둔 종료점으로 이동합니다." },
+      { keys:["Ctrl","Shift","I"], name:"시작점 지우기(Clear In)", desc:"지정한 시작점을 해제합니다." },
+      { keys:["Ctrl","Shift","O"], name:"종료점 지우기(Clear Out)", desc:"지정한 종료점을 해제합니다." },
+      { keys:["Ctrl","Shift","X"], name:"시작·종료점 모두 지우기(Clear In and Out)", desc:"지정한 시작점과 종료점을 한 번에 해제합니다." },
+      { keys:["M"], name:"마커 추가(Add Marker)", desc:"재생헤드 위치에 마커(표시)를 추가합니다." },
+    ]},
+    { title:"타임라인 편집(Timeline Editing) · 보충", items:[
+      { keys:["Ctrl","K"], name:"편집점 추가(Add Edit)", desc:"재생헤드 위치에서 선택한 클립(또는 트랙)을 자릅니다." },
+      { keys:["Ctrl","Shift","K"], name:"모든 트랙에 편집점 추가(Add Edit to All Tracks)", desc:"재생헤드 위치에서 모든 트랙의 클립을 한꺼번에 자릅니다." },
+      { keys:["Q"], name:"앞쪽 잔물결 트림(Ripple Trim Previous Edit)", desc:"재생헤드 위치까지 앞쪽 클립을 잘라내고 빈 공간을 메웁니다." },
+      { keys:["W"], name:"뒤쪽 잔물결 트림(Ripple Trim Next Edit)", desc:"재생헤드 위치부터 뒤쪽 클립을 잘라내고 빈 공간을 메웁니다." },
+      { keys:[","], name:"삽입(Insert)", desc:"소스 모니터의 클립을 타임라인에 끼워 넣고 뒤쪽 클립을 밀어냅니다." },
+      { keys:["."], name:"덮어쓰기(Overwrite)", desc:"소스 모니터의 클립을 타임라인 위에 덮어씁니다." },
+      { keys:["Ctrl","Shift","D"], name:"기본 오디오 전환 적용(Apply Audio Transition)", desc:"선택한 편집점에 기본 오디오 전환(크로스페이드)을 적용합니다." },
+    ]},
+    { title:"파일 · 편집 · 패널(File · Edit · Panels) · 보충", items:[
+      { keys:["Ctrl","N"], name:"새 시퀀스(New Sequence)", desc:"새로운 시퀀스(타임라인)를 만듭니다." },
+      { keys:["Ctrl","Alt","S"], name:"사본 저장(Save a Copy)", desc:"현재 프로젝트의 복사본을 따로 저장합니다." },
+      { keys:["Ctrl","Alt","V"], name:"속성 붙여넣기(Paste Attributes)", desc:"복사한 클립의 효과·속성만 다른 클립에 붙여넣습니다." },
+      { keys:["Ctrl","Shift","A"], name:"모두 선택 해제(Deselect All)", desc:"선택된 클립을 모두 해제합니다." },
+      { keys:["Ctrl","Q"], name:"프리미어 종료(Quit Premiere Pro)", desc:"프로그램을 종료합니다." },
+      { keys:["\\"], name:"시퀀스 전체 보기(Zoom to Sequence)", desc:"타임라인 전체가 한 화면에 보이도록 맞춥니다." },
+      { keys:["`"], name:"패널 최대화/복원(Maximize Panel)", desc:"마우스가 올려진 패널을 전체 화면으로 키우거나 되돌립니다." },
+      { keys:["Shift","1"], name:"프로젝트 패널(Project Panel)", desc:"프로젝트 패널을 활성화합니다." },
+      { keys:["Shift","2"], name:"소스 모니터(Source Monitor)", desc:"소스 모니터 패널을 활성화합니다." },
+      { keys:["Shift","3"], name:"타임라인 패널(Timeline Panel)", desc:"타임라인 패널을 활성화합니다." },
+      { keys:["Shift","4"], name:"프로그램 모니터(Program Monitor)", desc:"프로그램 모니터 패널을 활성화합니다." },
+      { keys:["Shift","5"], name:"이펙트 컨트롤 패널(Effect Controls Panel)", desc:"이펙트 컨트롤 패널을 활성화합니다." },
+      { keys:["Shift","7"], name:"이펙트 패널(Effects Panel)", desc:"이펙트(효과) 패널을 활성화합니다." },
     ]},
   ]
 };
@@ -594,7 +713,8 @@ let currentApp = 'photoshop';
 
 const APP_META = {
   photoshop: { eyebrow: 'Photoshop Shortcut Reference', title: '디자인 워크플로우', label:'포토샵' },
-  illustrator: { eyebrow: 'Illustrator Shortcut Reference', title: '벡터 드로잉 워크플로우', label:'일러스트레이터' }
+  illustrator: { eyebrow: 'Illustrator Shortcut Reference', title: '벡터 드로잉 워크플로우', label:'일러스트레이터' },
+  premiere: { eyebrow: 'Premiere Pro Shortcut Reference', title: '영상 편집 워크플로우', label:'프리미어' }
 };
 
 function escapeHtml(str){
