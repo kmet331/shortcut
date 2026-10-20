@@ -813,9 +813,18 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => setApp(btn.dataset.tab, true));
 });
 
+// 주소의 #아이디가 버튼 아이디와 같으면 브라우저가 그 버튼 위치로 자동 스크롤하므로,
+// 어떤 주소로 들어와도 항상 맨 위(제목)에서 시작하도록 되돌림
+function goTop(){ window.scrollTo(0, 0); }
+
 window.addEventListener('hashchange', () => {
   const a = appFromUrl();
-  if(a && a !== currentApp) setApp(a, false);
+  if(a){
+    if(a !== currentApp) setApp(a, false);
+    goTop();
+    setTimeout(goTop, 0);
+    setTimeout(goTop, 100);
+  }
 });
 
 searchInput.addEventListener('input', render);
@@ -826,6 +835,12 @@ clearBtn.addEventListener('click', () => {
 });
 
 setApp(appFromUrl() || 'photoshop', false);
+if(appFromUrl()){
+  goTop();
+  window.addEventListener('load', goTop);
+  setTimeout(goTop, 0);
+  setTimeout(goTop, 150);
+}
 </script>
 </body>
 </html>
